@@ -25,14 +25,25 @@ public class Ventana extends JFrame{
 	//Atributos base
 	public Ventana() {
 		
-		this.setSize(1000, 750);//Tamaño de la ventana
+		/*this.setSize(1000, 750);//Tamaño de la ventana
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//cerrar
 		this.setTitle("Mi ventana"); //Titulo
+
 		
 		//tamaños
 		this.setMinimumSize(new Dimension(250,250));
 		this.setMaximumSize(new Dimension(1000,270));
-		this.setResizable(true);
+		this.setResizable(true);*/
+		///////////////////////////////////////////////////////////////////////
+		
+		this.setSize(345, 440);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//cerrar
+		this.setTitle("Calculadora"); //Titulo
+		
+		//tamaños
+		this.setMinimumSize(new Dimension(300,330));
+		this.setMaximumSize(new Dimension(345,440));
+		this.setResizable(false);
 		
 		//ubicacion
 		this.setLocation(200,200);
@@ -54,9 +65,10 @@ public class Ventana extends JFrame{
 		//background -opaque
 		//String constructor
 		
-		this.admin();
+		//this.admin();
 		//this.login();
 		//this.registro();
+		this.calculadora();
 		
 		this.repaint();
 		this.validate();
@@ -352,5 +364,158 @@ public class Ventana extends JFrame{
 		
 	}
 	
+	public void calculadora() {
+		
+		
+		JPanel calculadora = new JPanel ();
+	    calculadora.setSize(this.getWidth(), this.getHeight());
+	    calculadora.setBackground(Color.decode("#DCDDDB"));
+	    calculadora.setLayout(null);
+	    
+	    
+	    JTextField pantalla = new JTextField ("0");
+	    pantalla.setFont(new Font("Segoe UI",Font.BOLD,50));//establece fuente del texto
+	    pantalla.setHorizontalAlignment(SwingConstants.RIGHT); // Alinea el texto a la derecha
+	    pantalla.setForeground(Color.black);
+		pantalla.setBounds(10,10,310,80);
+		pantalla.setBackground(Color.decode("#848E63"));
+		calculadora.add(pantalla);
+		
+	    JButton CE = new JButton("CE");
+		CE.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		CE.setForeground(Color.white);
+		CE.setBounds(10, 100, 70, 50); 
+		CE.setBackground(Color.decode("#62908D"));
+		calculadora.add(CE);
+		
+
+	    JButton botonVacio = new JButton("");
+	    botonVacio.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+	    botonVacio.setBounds(90, 100, 230, 50); 
+	    botonVacio.setBackground(Color.decode("#908DC2"));
+		calculadora.add(botonVacio);
+	
+		
+		JButton botonNum7 = new JButton("7");
+		botonNum7.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		botonNum7.setForeground(Color.white);
+		botonNum7.setBounds(10, 160, 70, 50); 
+		botonNum7.setBackground(Color.decode("#908DC2"));
+		calculadora.add(botonNum7);
+		
+		JButton BotonNum0 = new JButton("0");
+		BotonNum0.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		BotonNum0.setForeground(Color.white);
+		BotonNum0.setBounds(10, 340, 70, 50); 
+		BotonNum0.setBackground(Color.decode("#908DC2"));
+		calculadora.add(BotonNum0);
+		
+		JButton botonNum1 = new JButton("1");
+		botonNum1.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		botonNum1.setForeground(Color.white);
+		botonNum1.setBounds(10, 280, 70, 50); 
+		botonNum1.setBackground(Color.decode("#908DC2"));
+		calculadora.add(botonNum1);
+		
+		JButton botonNum2 = new JButton("2");
+		botonNum2.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		botonNum2.setForeground(Color.white);
+		botonNum2.setBounds(90, 280, 70, 50); 
+		botonNum2.setBackground(Color.decode("#908DC2"));
+		calculadora.add(botonNum2);
+		
+		JButton botonNum4 = new JButton("4");
+		botonNum4.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		botonNum4.setForeground(Color.white);
+		botonNum4.setBounds(10, 220, 70, 50); 
+		botonNum4.setBackground(Color.decode("#908DC2"));
+		calculadora.add(botonNum4);
+	
+		JButton num8 = new JButton("8");
+		num8.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		num8.setForeground(Color.white);
+		num8.setBounds(90, 160, 70, 50); 
+		num8.setBackground(Color.decode("#908DC2"));
+		calculadora.add(num8);
+		
+		JButton num5 = new JButton("5");
+		num5.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		num5.setForeground(Color.white);
+		num5.setBounds(90, 220, 70, 50); 
+		num5.setBackground(Color.decode("#908DC2"));
+		calculadora.add(num5);
+		
+		
+		JButton punto = new JButton(".");
+		punto.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		punto.setForeground(Color.white);
+		punto.setBounds(90, 340, 70, 50); 
+		punto.setBackground(Color.decode("#908DC2"));
+		calculadora.add(punto);
+	    
+		
+		
+		JButton num9 = new JButton("9");
+		num9.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		num9.setForeground(Color.white);
+		num9.setBounds(170, 160, 70, 50); 
+		num9.setBackground(Color.decode("#908DC2"));
+		calculadora.add(num9);
+		
+		JButton num6 = new JButton("6");
+		num6.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		num6.setForeground(Color.white);
+		num6.setBounds(170, 220, 70, 50); 
+		num6.setBackground(Color.decode("#908DC2"));
+		calculadora.add(num6);
+		
+		JButton num3 = new JButton("3");
+		num3.setFont(new Font("Segoe UI", Font.BOLD, 30));
+		num3.setForeground(Color.white);
+		num3.setBounds(170, 280, 70, 50); 
+		num3.setBackground(Color.decode("#908DC2"));
+		calculadora.add(num3);
+
+		JButton igual = new JButton("=");
+		igual.setFont(new Font("Segoe UI", Font.BOLD, 30));
+		igual.setForeground(Color.white);
+		igual.setBounds(170, 340, 70, 50); 
+		igual.setBackground(Color.decode("#908DC2"));
+		calculadora.add(igual);
+		
+
+		JButton division = new JButton("/");
+		division.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		division.setForeground(Color.white);
+		division.setBounds(250, 160, 70, 50); 
+		division.setBackground(Color.decode("#7C6290"));
+		calculadora.add(division);
+		
+		JButton multiplicacion = new JButton("*");
+		multiplicacion.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		multiplicacion.setForeground(Color.white);
+		multiplicacion.setBounds(250, 220, 70, 50); 
+		multiplicacion.setBackground(Color.decode("#7C6290"));
+		calculadora.add(multiplicacion);
+		
+		JButton resta = new JButton("-");
+		resta.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		resta.setForeground(Color.white);
+		resta.setBounds(250, 280, 70, 50); 
+		resta.setBackground(Color.decode("#7C6290"));
+		calculadora.add(resta);
+		
+		JButton suma = new JButton("+");
+		suma.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		suma.setForeground(Color.white);
+		suma.setBounds(250, 340, 70, 50); 
+		suma.setBackground(Color.decode("#7C6290"));
+		calculadora.add(suma);
+		
+	    this.add(calculadora);
+		
+	    
+		
+	}
 	
 }
