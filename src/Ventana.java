@@ -4,6 +4,7 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -25,7 +26,7 @@ public class Ventana extends JFrame{
 	//Atributos base
 	public Ventana() {
 		
-		/*this.setSize(1000, 750);//Tamaño de la ventana
+		this.setSize(1000, 750);//Tamaño de la ventana
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//cerrar
 		this.setTitle("Mi ventana"); //Titulo
 
@@ -33,10 +34,13 @@ public class Ventana extends JFrame{
 		//tamaños
 		this.setMinimumSize(new Dimension(250,250));
 		this.setMaximumSize(new Dimension(1000,270));
-		this.setResizable(true);*/
-		///////////////////////////////////////////////////////////////////////
+		this.setResizable(true);
 		
-		this.setSize(345, 440);
+		
+		///////////////////////////////////////////////////////////////////////
+		// Tamaño de ventana de la calculadora
+		
+		/*this.setSize(345, 440);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//cerrar
 		this.setTitle("Calculadora"); //Titulo
 		
@@ -44,6 +48,8 @@ public class Ventana extends JFrame{
 		this.setMinimumSize(new Dimension(300,330));
 		this.setMaximumSize(new Dimension(345,440));
 		this.setResizable(false);
+		*/
+		///////////////////////////////////////////////////////////////////////
 		
 		//ubicacion
 		this.setLocation(200,200);
@@ -66,9 +72,9 @@ public class Ventana extends JFrame{
 		//String constructor
 		
 		//this.admin();
-		//this.login();
+		this.login();
 		//this.registro();
-		this.calculadora();
+		//this.calculadora();
 		
 		this.repaint();
 		this.validate();
@@ -79,55 +85,101 @@ public class Ventana extends JFrame{
 	public void login()
 	{
 		JPanel login = new JPanel();
-		login.setSize(this.getWidth()/2, this.getHeight()); //Panel en mitad del frame
-		login.setBackground(Color.LIGHT_GRAY);
+		login.setSize(this.getWidth(), this.getHeight()); //Panel en mitad del frame
+		login.setBackground(Color.decode("#335B92"));
 		login.setLayout(null);
 		
 		
-		JLabel loginTag = new JLabel("ACCEDER",0);// SwingConstants.CENTER sirve tambien para centrar
-		loginTag.setSize(250,80);//Tamaño del boton
-		loginTag.setFont (new Font ("Microsoft Uighur",Font.BOLD,50));//Cambiar la fuente
+		JLabel loginTag = new JLabel("User Login",0);// SwingConstants.CENTER sirve tambien para centrar
+		loginTag.setSize(450,80);//Tamaño del boton
+		loginTag.setFont (new Font ("Arial", Font.BOLD,35));//Cambiar la fuente
 		loginTag.setForeground(Color.white);//Cambiar el color de letra
-		loginTag.setLocation(120,20);
+		loginTag.setLocation(270,10);
 		loginTag.setOpaque(true);
-		loginTag.setBackground(Color.pink);//Poner el color de fondo
-		
-		JLabel userTag = new JLabel("NOMBRE DE USUARIO: ");
-		userTag.setBounds(10, 120, 300, 40); // Ajusta coorde y tam de contraseña
-		userTag.setFont (new Font ("Microsoft Uighur",Font.BOLD,30));
-		login.add(userTag);
-		
-		
-		JTextField email = new JTextField();
-	    email.setBounds(10, 160, 300, 40); 
-	    login.add(email);
-		
-		JPasswordField passwordField = new JPasswordField("");
-		passwordField.setBounds(10, 260, 300, 40);//X,Y,Ancho,Largo
-	    login.add(passwordField);
-	    
-	    JLabel password = new JLabel("CONTRASEÑA: ");
-	    password.setBounds(10, 220, 200, 40); // Ajusta coordenadas y tamaño de la etiqueta de contraseña
-	    password.setFont(new Font("Microsoft Uighur", Font.BOLD, 30));
-	    login.add(password); // Agrega la etiqueta de contraseña al panel de inicio de sesión
-	    
-		
-		JCheckBox remember = new JCheckBox("Recordarme");
-		remember.setBounds(10, 300, 150, 40);
-		remember.setOpaque(false);//vuelve opaco el fondo de la casilla
-		login.add(remember);
-		
-		
-		JLabel forgot = new JLabel("¿Olvidó su contraseña?");
-		forgot.setBounds(175,300,150,40);//(x,y,ancho,alto)
-		login.add(forgot);//añade el componente
+		loginTag.setBackground(null);//Poner el color de fondo
 		login.add(loginTag);
 		
-
-		JButton accept = new JButton("ACCEDER");
-		accept.setFont(new Font("Microsoft Uighur",Font.BOLD,40));//establece fuente del texto
-		accept.setBounds(50, 350, 200, 70);
-		login.add(accept);
+		JLabel MyAccountTittle = new JLabel("My account",0);// SwingConstants.CENTER sirve tambien para centrar
+		MyAccountTittle.setSize(450,80);//Tamaño del boton
+		MyAccountTittle.setFont (new Font ("Arial", Font.BOLD + Font.ITALIC,45));//Cambiar la fuente
+		MyAccountTittle.setForeground(Color.decode("#E0c668"));//Cambiar el color de letra
+		MyAccountTittle.setLocation(270,100 );
+		login.add(MyAccountTittle);
+		
+		//////////////////////////////777
+		/*JLabel logoGato = new JLabel();
+		logo.setIcon(new ImageIcon(getClass().getResource("iconoGato.JPEG")));
+		logo.setBounds(10,50,240,240);
+		login.add(logoGato); */
+		//////////////////////////////////
+		
+		
+		JLabel userTag = new JLabel("Enter your user name: ");
+		userTag.setBounds(220, 180, 300, 40); // Ajusta coorde y tam de contraseña
+		userTag.setFont (new Font ("Arial",Font.BOLD+Font.ITALIC,20));
+		userTag.setForeground(Color.white);
+		login.add(userTag);
+		
+		JTextField userName = new JTextField();
+		userName.setBounds(220, 230, 600, 60); 
+		userName.setFont (new Font ("Arial",Font.BOLD,20));
+	    login.add(userName);
+	    
+	    
+	  
+	    JLabel logoUser = new JLabel();
+	    logoUser.setIcon(new ImageIcon(getClass().getResource("user.png")));
+	    logoUser.setBounds(168,235,50,50);
+		login.add(logoUser); 
+		
+		
+		
+		JLabel password = new JLabel("Enter your password: ");
+		password.setBounds(220, 330, 300, 40); // Ajusta coorde y tam de contraseña
+		password.setFont (new Font ("Arial",Font.BOLD+ Font.ITALIC,20));
+		password.setForeground(Color.white);
+		login.add(password);
+	    
+	    
+		JPasswordField passwordField = new JPasswordField("");
+		passwordField.setBounds(220, 380, 600, 60);//X,Y,Ancho,Largo
+		passwordField.setFont (new Font ("Arial",Font.BOLD,20));
+	    login.add(passwordField);
+	    
+	    
+	    JButton btLogin = new JButton("Login");
+		btLogin.setFont(new Font("Arial",Font.BOLD,20));//establece fuente del texto
+		btLogin.setBounds(400, 460, 200, 70);
+		btLogin.setBackground(Color.decode("#E0c668"));
+		login.add(btLogin);
+		
+		
+		JLabel logoPassword = new JLabel();
+		logoPassword.setIcon(new ImageIcon(getClass().getResource("Password.png")));
+		logoPassword.setBounds(161,385,50,50);
+		login.add(logoPassword); 
+		
+		
+		
+		JLabel NoAccount = new JLabel("Don´t have a account?");
+		NoAccount.setBounds(420,560,200,40);//(x,y,ancho,alto)
+		NoAccount.setFont (new Font ("Arial",Font.BOLD,15));
+		NoAccount.setForeground(Color.white);
+		login.add(NoAccount);//añade el componente
+		
+		
+		JButton singUp = new JButton("Sing Up");
+	    singUp.setFont(new Font("Arial",Font.BOLD,20));
+	    singUp.setBounds(430, 610, 150, 50); 
+	    singUp.setBackground(Color.decode("#E0c668"));
+	    login.add(singUp);
+		
+		JLabel contornoTexto = new JLabel(" ");
+		contornoTexto.setBounds(90, 100, 800, 450); // Ajusta coordenadas y tamaño de la etiqueta 
+		contornoTexto.setBackground(Color.decode("#2B4D7B"));
+		contornoTexto.setOpaque(true);
+	    login.add(contornoTexto); 
+	    
 		
 		this.add(login);
 		
@@ -257,6 +309,8 @@ public class Ventana extends JFrame{
 		aceptar.setFont(new Font("Microsoft Uighur",Font.BOLD,38));//establece fuente del texto
 		aceptar.setBounds(50, 530, 400, 70);
 		registro.add(aceptar);
+		
+		
 		
 		
 		this.add(registro);
@@ -396,19 +450,27 @@ public class Ventana extends JFrame{
 		calculadora.add(botonVacio);
 	
 		
-		JButton botonNum7 = new JButton("7");
-		botonNum7.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
-		botonNum7.setForeground(Color.white);
-		botonNum7.setBounds(10, 160, 70, 50); 
-		botonNum7.setBackground(Color.decode("#908DC2"));
-		calculadora.add(botonNum7);
-		
 		JButton BotonNum0 = new JButton("0");
 		BotonNum0.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
 		BotonNum0.setForeground(Color.white);
 		BotonNum0.setBounds(10, 340, 70, 50); 
 		BotonNum0.setBackground(Color.decode("#908DC2"));
 		calculadora.add(BotonNum0);
+		
+		JButton punto = new JButton(".");
+		punto.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		punto.setForeground(Color.white);
+		punto.setBounds(90, 340, 70, 50); 
+		punto.setBackground(Color.decode("#908DC2"));
+		calculadora.add(punto);
+		
+		JButton igual = new JButton("=");
+		igual.setFont(new Font("Segoe UI", Font.BOLD, 30));
+		igual.setForeground(Color.white);
+		igual.setBounds(170, 340, 70, 50); 
+		igual.setBackground(Color.decode("#908DC2"));
+		calculadora.add(igual);
+		
 		
 		JButton botonNum1 = new JButton("1");
 		botonNum1.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
@@ -424,19 +486,20 @@ public class Ventana extends JFrame{
 		botonNum2.setBackground(Color.decode("#908DC2"));
 		calculadora.add(botonNum2);
 		
+		JButton num3 = new JButton("3");
+		num3.setFont(new Font("Segoe UI", Font.BOLD, 30));
+		num3.setForeground(Color.white);
+		num3.setBounds(170, 280, 70, 50); 
+		num3.setBackground(Color.decode("#908DC2"));
+		calculadora.add(num3);
+		
+		
 		JButton botonNum4 = new JButton("4");
 		botonNum4.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
 		botonNum4.setForeground(Color.white);
 		botonNum4.setBounds(10, 220, 70, 50); 
 		botonNum4.setBackground(Color.decode("#908DC2"));
 		calculadora.add(botonNum4);
-	
-		JButton num8 = new JButton("8");
-		num8.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
-		num8.setForeground(Color.white);
-		num8.setBounds(90, 160, 70, 50); 
-		num8.setBackground(Color.decode("#908DC2"));
-		calculadora.add(num8);
 		
 		JButton num5 = new JButton("5");
 		num5.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
@@ -445,23 +508,6 @@ public class Ventana extends JFrame{
 		num5.setBackground(Color.decode("#908DC2"));
 		calculadora.add(num5);
 		
-		
-		JButton punto = new JButton(".");
-		punto.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
-		punto.setForeground(Color.white);
-		punto.setBounds(90, 340, 70, 50); 
-		punto.setBackground(Color.decode("#908DC2"));
-		calculadora.add(punto);
-	    
-		
-		
-		JButton num9 = new JButton("9");
-		num9.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
-		num9.setForeground(Color.white);
-		num9.setBounds(170, 160, 70, 50); 
-		num9.setBackground(Color.decode("#908DC2"));
-		calculadora.add(num9);
-		
 		JButton num6 = new JButton("6");
 		num6.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
 		num6.setForeground(Color.white);
@@ -469,21 +515,29 @@ public class Ventana extends JFrame{
 		num6.setBackground(Color.decode("#908DC2"));
 		calculadora.add(num6);
 		
-		JButton num3 = new JButton("3");
-		num3.setFont(new Font("Segoe UI", Font.BOLD, 30));
-		num3.setForeground(Color.white);
-		num3.setBounds(170, 280, 70, 50); 
-		num3.setBackground(Color.decode("#908DC2"));
-		calculadora.add(num3);
-
-		JButton igual = new JButton("=");
-		igual.setFont(new Font("Segoe UI", Font.BOLD, 30));
-		igual.setForeground(Color.white);
-		igual.setBounds(170, 340, 70, 50); 
-		igual.setBackground(Color.decode("#908DC2"));
-		calculadora.add(igual);
 		
+		JButton botonNum7 = new JButton("7");
+		botonNum7.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		botonNum7.setForeground(Color.white);
+		botonNum7.setBounds(10, 160, 70, 50); 
+		botonNum7.setBackground(Color.decode("#908DC2"));
+		calculadora.add(botonNum7);
+	
+		JButton num8 = new JButton("8");
+		num8.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		num8.setForeground(Color.white);
+		num8.setBounds(90, 160, 70, 50); 
+		num8.setBackground(Color.decode("#908DC2"));
+		calculadora.add(num8);
+		
+		JButton num9 = new JButton("9");
+		num9.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
+		num9.setForeground(Color.white);
+		num9.setBounds(170, 160, 70, 50); 
+		num9.setBackground(Color.decode("#908DC2"));
+		calculadora.add(num9);
 
+		
 		JButton division = new JButton("/");
 		division.setFont(new Font("Segoe UI",Font.BOLD,30));//establece fuente del texto
 		division.setForeground(Color.white);
