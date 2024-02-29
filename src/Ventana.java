@@ -32,7 +32,7 @@ public class Ventana extends JFrame{
 		
 		this.setSize(1000, 750);//Tamaño de la ventana
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//cerrar
-		this.setTitle("Mi ventana"); //Titulo
+		this.setTitle("Ventana"); //Titulo
 
 		
 		//tamaños
@@ -79,7 +79,8 @@ public class Ventana extends JFrame{
 		//this.login();
 		//this.registro();
 		//this.calculadora();
-		this.calculadora2();
+		//this.calculadora2();
+		this.calculadora3();;
 		
 		this.repaint();
 		this.validate();
@@ -580,7 +581,7 @@ public class Ventana extends JFrame{
 	}*/
 	
 	
-public void calculadora2() {
+/*public void calculadora2() {
 		
 		this.setSize(480,650);
 		
@@ -647,6 +648,182 @@ public void calculadora2() {
 		
 		
 		this.add(panel);
+		
+	}*/
+	
+	public void calculadora3()
+	
+	{
+		this.setSize(800,600);
+		
+		JPanel principal = new JPanel();
+		principal.setSize(this.getWidth(), this.getHeight());
+		principal.setBackground(Color.white);
+		principal.setLayout(new BorderLayout());
+			
+		JLabel interes = new JLabel("	     Interés"); //genera el texto interes
+		interes.setOpaque(true);
+		interes.setFont(new Font("Arial",Font.BOLD + Font.ITALIC,30));
+		interes.setForeground(Color.red);
+		interes.setBackground(Color.WHITE);
+		principal.add(interes, BorderLayout.NORTH);
+		
+		
+		
+		JLabel westVacio = new JLabel("	     "); //genera el texto interes
+		westVacio.setOpaque(true);
+		westVacio.setFont(new Font("Arial",Font.BOLD + Font.ITALIC,30));
+		//westVacio.setForeground(Color.red);
+		westVacio.setBackground(null);
+		principal.add(westVacio, BorderLayout.WEST);
+		
+		
+		JLabel eastVacio = new JLabel("	     "); //genera el texto interes
+		eastVacio.setOpaque(true);
+		eastVacio.setFont(new Font("Arial",Font.BOLD + Font.ITALIC,42));
+		//westVacio.setForeground(Color.red);
+		eastVacio.setBackground(null);
+		principal.add(eastVacio, BorderLayout.EAST);
+		
+		JLabel SouthVacio = new JLabel("	     "); //genera el texto interes
+		SouthVacio.setOpaque(true);
+		SouthVacio.setFont(new Font("Arial",Font.BOLD + Font.ITALIC,70));
+		//westVacio.setForeground(Color.red);
+		SouthVacio.setBackground(null);
+		principal.add(SouthVacio, BorderLayout.SOUTH);
+		
+		
+		
+		JPanel central = new JPanel();//contiene cuadro verde y rojo
+		//central.setSize(this.getWidth(), this.getHeight());
+		central.setBackground(Color.white);
+		central.setOpaque(true);
+		central.setLayout(new GridLayout(2,1,40,40)); 
+		principal.add(central, BorderLayout.CENTER);
+		
+		JPanel central1 = new JPanel();//contiene cuadro verde y rojo
+		//central1.setSize(this.getWidth(), this.getHeight());
+		
+		central1.setBackground(Color.decode("#97FF92"));//verde
+		//central1.setBounds(50,50,100,100);
+		central1.setOpaque(true);
+		central1.setLayout(null); 
+		central.add(central1);
+		
+		
+		JLabel TexteCalcular  = new JLabel("Calcular interés",2); //genera el texto interes
+		TexteCalcular.setOpaque(true);
+		TexteCalcular.setFont(new Font("Arial",Font.BOLD,17));
+		TexteCalcular.setForeground(Color.black);
+		TexteCalcular.setBounds(2,1,200,40);
+		TexteCalcular.setBackground(null);
+		central1.add(TexteCalcular, BorderLayout.NORTH);
+		
+		
+		JLabel capital = new JLabel("Capital:"); //genera el texto interes
+		capital.setOpaque(true);
+		capital.setFont(new Font("Arial",Font.ITALIC,20));
+		capital.setBounds(190,40,100,30);
+		capital.setBackground(null);
+		central1.add(capital);
+		
+		JTextField capitalText = new JTextField("1500"); //genera el texto interes
+		capitalText.setOpaque(true);
+		capitalText.setFont(new Font("Arial",Font.ITALIC,20));
+		capitalText.setBounds(350,40,150,30);
+		capitalText.setBackground(Color.white);
+		central1.add(capitalText);
+		
+		JLabel tiempo = new JLabel("Tiempo:"); //genera el texto interes
+		tiempo.setOpaque(true);
+		tiempo.setFont(new Font("Arial",Font.ITALIC,20));
+		tiempo.setBounds(190,80,100,30);
+		tiempo.setBackground(null);
+		central1.add(tiempo);
+		
+		
+		JTextField tiempoText = new JTextField("2"); //genera el texto interes
+		tiempoText.setOpaque(true);
+		tiempoText.setFont(new Font("Arial",Font.ITALIC,20));
+		tiempoText.setBounds(350,80,150,30);
+		tiempoText.setBackground(Color.white);
+		central1.add(tiempoText);
+		
+		
+		JLabel tasaInteres = new JLabel("Tasa interés:"); //genera el texto interes
+		tasaInteres.setOpaque(true);
+		tasaInteres.setFont(new Font("Arial",Font.ITALIC,20));
+		tasaInteres.setBounds(190,120,160,30);
+		tasaInteres.setBackground(null);
+		central1.add(tasaInteres);
+		
+		
+		JTextField TasaInteresText= new JTextField("0.1"); //genera el texto interes
+		TasaInteresText.setOpaque(true);
+		TasaInteresText.setFont(new Font("Arial",Font.ITALIC,20));
+		TasaInteresText.setBounds(350,120,150,30);
+		TasaInteresText.setBackground(Color.white);
+		central1.add(TasaInteresText);
+		
+		
+		JButton calcular = new JButton("Calcular");
+		calcular.setBounds(180, 180, 140, 30);
+		calcular.setFont(new Font("Arial", Font.BOLD, 15));
+		calcular.setForeground(Color.white);
+		calcular.setBackground(Color.BLACK);
+		calcular.setOpaque(true);
+		central1.add(calcular);
+		
+		JButton cancelar = new JButton("Cancelar");
+		cancelar.setBounds(350, 180, 140, 30);
+		cancelar.setFont(new Font("Arial", Font.BOLD, 15));
+		cancelar.setForeground(Color.white);
+		cancelar.setBackground(Color.BLACK);
+		cancelar.setOpaque(true);
+		central1.add(cancelar);
+		
+		JPanel central2 = new JPanel();//contiene cuadro verde y rojo
+		//central.setSize(this.getWidth(), this.getHeight());
+		central2.setBackground(Color.decode("#FF8787"));
+		central2.setOpaque(true);
+		central2.setLayout(null); 
+		central.add(central2);
+		
+		
+		JLabel interesEtiqueta = new JLabel("Interes:"); //genera el texto interes
+		interesEtiqueta.setOpaque(true);
+		interesEtiqueta.setFont(new Font("Arial",Font.ITALIC,20));
+		interesEtiqueta.setBounds(190,50,100,30);
+		interesEtiqueta.setBackground(null);
+		central2.add(interesEtiqueta);
+		
+		
+		JTextField interesText= new JTextField("315.0000000000002"); //genera el texto interes
+		interesText.setOpaque(true);
+		interesText.setFont(new Font("Arial",Font.ITALIC,20));
+		interesText.setBounds(300,50,200,30);
+		interesText.setBackground(Color.white);
+		central2.add(interesText);
+		
+		
+		JLabel MontoEtiqueta = new JLabel("Monto:"); //genera el texto interes
+		MontoEtiqueta.setOpaque(true);
+		MontoEtiqueta.setFont(new Font("Arial",Font.ITALIC,20));
+		MontoEtiqueta.setBounds(190,100,100,30);
+		MontoEtiqueta.setBackground(null);
+		central2.add(MontoEtiqueta);
+		
+		
+		JTextField monto= new JTextField("1815.0000000000002"); //genera el texto interes
+		monto.setOpaque(true);
+		monto.setFont(new Font("Arial",Font.ITALIC,20));
+		monto.setBounds(300,100,200,30);
+		monto.setBackground(Color.white);
+		central2.add(monto);
+		
+
+		this.add(principal);
+		
 		
 	}
 	
