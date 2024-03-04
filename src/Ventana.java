@@ -167,7 +167,7 @@ public class Ventana extends JFrame{
 		
 		
 		
-		JLabel NoAccount = new JLabel("Don´t have a account?");
+		JLabel NoAccount = new JLabel("Don  ´t have a account?");
 		NoAccount.setBounds(420,560,200,40);//(x,y,ancho,alto)
 		NoAccount.setFont (new Font ("Arial",Font.BOLD,15));
 		NoAccount.setForeground(Color.white);
