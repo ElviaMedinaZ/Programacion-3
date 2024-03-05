@@ -1,10 +1,17 @@
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -64,7 +71,66 @@ public class Ventana extends JFrame{
 		this.setVisible(true);
 	}
 	
-	/////////////////////////////// INICIAR COMPONENTES //////////////////////////////////
+	
+	@Override //El override va obligatorio para algunos
+	public void paint(Graphics g) { //Si la funcion no se llama Paint no funciona 
+		super.paint(g);
+		Graphics2D g2d = (Graphics2D)g;
+		
+		g2d.setColor(Color.pink);//Da el colorcito
+		
+		g2d.fillRect(50, 50, 200, 100);//coloca el cuadrado (solo dibuja rectangulos y cuadrados rellenos
+		//g2d.drawLine(30, 70, 770, 70);
+		g2d.clearRect(100, 100, 100, 100); //agarra una zona y la limpia como un borrador
+		
+		g2d.drawArc(300, 300, 100, 100, 45, 90);
+		g2d.fillArc(300, 300, 100, 100, 45, 180);
+		g2d.setColor(Color.black);
+		g2d.drawLine(0, 0, 500, 500);
+		//El orden de la posicion afecta
+		
+		g2d.drawOval(400, 400, 50, 80);
+		g2d.fillOval(350, 400, 50, 80);
+		
+		int xPoints[] = {100,250,300};
+		int yPoints [] = {100,200,300};
+		//int nPoints [] = {1,2};
+		
+		g2d.setColor(Color.red);
+		//g2d.drawPolyline(xPoints, yPoints,3);
+		
+		g2d.fillPolygon(xPoints,yPoints,3);
+		
+		g2d.setFont (new Font ("Arial", Font.BOLD,40));
+		g2d.drawString("Hola", 250, 150);
+		
+		g2d.setStroke(new BasicStroke(10));
+		
+		g2d.setColor(Color.cyan);
+		g2d.drawRoundRect(450, 150, 200, 150, 10, 10);
+		
+		/*try {
+			File path  = new File ("iconoGato.jpeg");
+			BufferedImage image = ImageIO.read(new File(path,"iconoGato.jpeg"));
+		}catch(IOException e) {
+			//TODO Auto-generated catch black
+			e.printStackTrace();
+		}*/
+		
+		try {
+			
+			BufferedImage image = ImageIO.read(new File("src/iconoGato.jpeg"));
+			g2d.drawImage(image, 200, 500, null);
+		}catch(IOException e)
+		{
+			//TODO Auto-generated catch black
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+/////////////////////////////// INICIAR COMPONENTES //////////////////////////////////
 	
 	public void iniciarComponentes()
 	{
@@ -80,7 +146,7 @@ public class Ventana extends JFrame{
 		//this.registro();
 		//this.calculadora();
 		//this.calculadora2();
-		this.calculadora3();;
+		//this.calculadora3();;
 		
 		this.repaint();
 		this.validate();
@@ -424,7 +490,6 @@ public class Ventana extends JFrame{
 		
 	}
 	
-	/*
 	
 	public void calculadora() {
 		
@@ -578,10 +643,10 @@ public class Ventana extends JFrame{
 		
 	    
 		
-	}*/
+	}
 	
 	
-/*public void calculadora2() {
+public void calculadora2() {
 		
 		this.setSize(480,650);
 		
@@ -649,7 +714,7 @@ public class Ventana extends JFrame{
 		
 		this.add(panel);
 		
-	}*/
+	}
 	
 	public void calculadora3()
 	
