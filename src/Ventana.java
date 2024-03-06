@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +35,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Ventana extends JFrame{
+public class Ventana extends JFrame implements MouseListener{
 	//Atributos base
 	public Ventana() {
 		
@@ -69,6 +71,7 @@ public class Ventana extends JFrame{
 		
 		this.iniciarComponentes();//Agrega los componentes
 		this.setVisible(true);
+		this.addMouseListener(this);
 	}
 	
 	
@@ -127,8 +130,8 @@ public class Ventana extends JFrame{
 			e.printStackTrace();
 		}*/
 		
-		
-		super.paint(g);
+		///////////////////////////////////codigo casa /////////////////////////////////////////////////
+		/*super.paint(g);
 		Graphics2D casa = (Graphics2D)g;
 				
 		casa.setColor(Color.decode("#60DCE0"));//azul
@@ -210,9 +213,232 @@ public class Ventana extends JFrame{
 		casa.fillRect(490, 260, 180, 130);//ventana
 		
 		casa.setColor(Color.decode("#9C9C9C"));//Ventana marco color
-		casa.fillRect(570, 260, 20, 140);//ventana marco
+		casa.fillRect(570, 260, 20, 140);//ventana marco*/
+		
+		super.paint(g);
+		Graphics2D mario = (Graphics2D)g;
+		
+		mario.setColor(Color.decode("#B3ECFA"));//azul
+		mario.fillRect(0, 0, 1000, 700); // cielo
+		
+		mario.setColor(Color.decode("#000000"));//tubo azul sombra
+		mario.fillRect(350, 305, 195, 510);
+		
+		mario.setColor(Color.decode("#2D7C8C"));//tubo azul sombra azul
+		mario.fillRect(370, 310, 175, 330);
+		
+		mario.setColor(Color.decode("#54A5B5"));//tubo azul
+		mario.fillRect(357, 310, 175, 313);
+		
+		mario.setColor(Color.decode("#000000"));//color sobra tubo azul
+		mario.fillRect(545, 350, 30, 280);
+		
+		mario.setColor(Color.decode("#FEBD99"));//
+		mario.fillRect(0, 650, 1000, 80); // piso
+		
+		mario.setColor(Color.decode("#000000"));//negro
+		mario.fillRect(0, 630, 1000, 25); // piso contorno arriba
+		
+		mario.setColor(Color.decode("#FEBD99"));
+		mario.fillRect(0, 632, 1000, 21); // piso arriba
+		
+		mario.setColor(Color.decode("#000000"));//color negro cubito
+		mario.fillRect(43, 362, 81, 81);
+		
+		mario.setColor(Color.decode("#FF975D"));
+		mario.fillRect(50, 370, 71, 71);
+		
+		mario.setColor(Color.decode("#000000"));//color negro cubito
+		mario.fillRect(225, 113, 144, 76);
+		
+		mario.setColor(Color.decode("#FF975D"));
+		mario.fillRect(228, 117, 67, 67);
+		
+		mario.setColor(Color.decode("#FF975D"));
+		mario.fillRect(300, 117, 67, 67);
+		
+		mario.setColor(Color.decode("#000000"));//color kubito rosa
+		mario.fillRect(232, 430, 200, 200);
+		
+		mario.setColor(Color.decode("#B98264"));
+		mario.fillRect(237, 436, 190, 190);
+		
+		mario.setColor(Color.decode("#FF975D"));
+		mario.fillRect(237, 436, 190, 190);
+		
+		mario.setColor(Color.decode("#FEBD99"));
+		mario.fillRect(240, 437, 175, 182);
+		
+		mario.setColor(Color.decode("#000000"));//color negro cubito
+		mario.fillRect(432, 460, 30, 170);
+		
+		mario.setColor(Color.decode("#000000"));//color negro kubito esquina
+		mario.fillRect(820, 430, 200, 200);
+		
+		mario.setColor(Color.decode("#5AE254"));//color cubito  verde esquina
+		mario.fillRect(830, 436, 190, 190);
+		
+		mario.setColor(Color.decode("#2DB027"));//sombra de abajo cubo esquina
+		mario.fillRect(830, 619, 190, 8);
+		
+		try {
+			
+			BufferedImage image = ImageIO.read(new File("src/flor mario.png"));
+			mario.drawImage(image, 630, 300, null);
+		}catch(IOException e)
+		{
+			//TODO Auto-generated catch black
+			e.printStackTrace();
+		}
+		
+		mario.setColor(Color.decode("#000000"));//sombra cuerpo tubo verde
+		mario.fillRect(640, 430, 120, 200);
+		
+		mario.setColor(Color.decode("#2DB027"));//cuerpo tubo verde
+		mario.fillRect(650, 440, 100, 190);
+		
+		mario.setColor(Color.decode("#28802C"));//cuerpo tubo verde fuerte
+		mario.fillRect(650, 440, 30, 190);
+		
+		mario.setColor(Color.decode("#000000"));// sombra cabeza tubo verde
+		mario.fillRect(622, 430, 155, 70);
+		
+		mario.setColor(Color.decode("#2DB027"));//cabeza tubo verde
+		mario.fillRect(632, 440, 135, 50);
+		
+		mario.setColor(Color.decode("#28802C"));//cabeza tubo verde
+		mario.fillRect(632, 440, 50, 50);
+		
+		int x =0;
+		int y =655; 
+		int ancho =14; 
+		int separacion =34;
+
+		// lineas verticales
+		for (int i = 0; i<21; i++) {
+		    mario.setColor(Color.decode("#FE9D67"));
+		    mario.fillRect(x + i * (ancho + separacion), y, ancho, 100);
+		}
 		
 		
+		
+		mario.setColor(Color.decode("#FE9D67"));// piso
+		mario.fillRect(0, 670, 1000, 80); 
+		
+		mario.setColor(Color.decode("#0000000"));// arbusto sombra
+		mario.fillOval(20, 510, 80, 80);
+		
+		mario.setColor(Color.decode("#0000000"));// sombra llenado arbusto
+		mario.fillRect(30, 590, 100, 40); 
+		
+		mario.setColor(Color.decode("#0000000"));// arbusto sombra
+		mario.fillOval(40, 500, 80, 80);
+		
+		mario.setColor(Color.decode("#0000000"));// arbusto sombra
+		mario.fillOval(60, 540, 80, 80);
+		
+		mario.setColor(Color.decode("#2DA433"));// arbusto
+		mario.fillOval(9, 550, 80, 80);
+		
+		mario.setColor(Color.decode("#2DA433"));// arbusto
+		mario.fillOval(50, 547, 80, 80);
+		
+		mario.setColor(Color.decode("#2DA433"));// arbusto
+		mario.fillOval(30, 510, 80, 80);
+		
+		mario.setColor(Color.decode("#2DA433"));// llenado arbusto
+		mario.fillRect(20, 590, 100, 40); 
+		
+		mario.setColor(Color.decode("#0000000"));// tornillo 1.1 bloque
+		mario.fillOval(61, 374, 10, 10);
+		
+		mario.setColor(Color.decode("#0000000"));// tornillo 1.2 bloque
+		mario.fillOval(102, 374, 10, 10);
+		
+		mario.setColor(Color.decode("#0000000"));// tornillo 1.3 bloque
+		mario.fillOval(60, 424, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 1.4 bloque
+		mario.fillOval(102, 424, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 2.1 azul
+		mario.fillOval(370, 330, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 2.2 azul
+		mario.fillOval(510, 330, 10, 10);
+		
+		mario.setColor(Color.decode("#0000000"));// tornillo 3.1 verde izq
+		mario.fillOval(850, 463, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 3.2 verde izq
+		mario.fillOval(850, 600, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 4.1 rosa grande
+		mario.fillOval(265, 463, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 4.2 rosa grande
+		mario.fillOval(388, 463, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 4.3 rosa grande
+		mario.fillOval(265, 590, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 4.4 rosa grande
+		mario.fillOval(388, 590, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 5.1 bloque 1/2
+		mario.fillOval(239, 125, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 5.2 bloque 1/2
+		mario.fillOval(275, 125, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 5.3 bloque 1/2
+		mario.fillOval(239, 170, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 5.4 bloque 1/2
+		mario.fillOval(275, 170, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 6.1 bloque 2/2
+		mario.fillOval(311, 125, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 6.2 bloque 2/2
+		mario.fillOval(345, 125, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 6.3 bloque 2/2
+		mario.fillOval(310, 170, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 6.4 bloque 2/2
+		mario.fillOval(346, 170, 10, 10);
+		
+		
+		try {
+			
+			BufferedImage image = ImageIO.read(new File("src/mario.png"));
+			mario.drawImage(image, 480, 450, null);
+		}catch(IOException e)
+		{
+			//TODO Auto-generated catch black
+			e.printStackTrace();
+		}
+		
+		mario.setColor(Color.decode("#000000"));//color negro cubito
+		mario.fillRect(883, 224, 81, 81);
+		
+		mario.setColor(Color.decode("#FF975D"));
+		mario.fillRect(888, 230, 71, 71);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 7.1 bloque der
+		mario.fillOval(902, 245, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 7.2 bloque der
+		mario.fillOval(932, 245, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 7.3 bloque der
+		mario.fillOval(902, 285, 10, 10);
+		
+		mario.setColor(Color.decode("#000000"));// tornillo 7.4 bloque der
+		mario.fillOval(932, 285, 10, 10);
+		
+	
 	}
 	
 	
@@ -975,6 +1201,42 @@ public void calculadora2() {
 
 		this.add(principal);
 		
+		
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println(e.getX());
+		System.out.println(e.getY());
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	
