@@ -74,8 +74,8 @@ public class Ventana extends JFrame{
 	
 	@Override //El override va obligatorio para algunos
 	public void paint(Graphics g) { //Si la funcion no se llama Paint no funciona 
-		super.paint(g);
-		Graphics2D g2d = (Graphics2D)g;
+		//super.paint(g);
+		/*Graphics2D g2d = (Graphics2D)g;
 		
 		g2d.setColor(Color.pink);//Da el colorcito
 		
@@ -115,7 +115,7 @@ public class Ventana extends JFrame{
 		}catch(IOException e) {
 			//TODO Auto-generated catch black
 			e.printStackTrace();
-		}*/
+		}
 		
 		try {
 			
@@ -125,7 +125,93 @@ public class Ventana extends JFrame{
 		{
 			//TODO Auto-generated catch black
 			e.printStackTrace();
+		}*/
+		
+		
+		super.paint(g);
+		Graphics2D casa = (Graphics2D)g;
+				
+		casa.setColor(Color.decode("#60DCE0"));//azul
+		casa.fillRect(0, 0, 1000, 600); // cielo
+				
+		casa.setColor(Color.decode("#3EF32F"));//verde
+		casa.fillRect(0, 520, 1000, 120); // piso/pasto
+				
+		casa.setColor(Color.decode("#684F26"));//cafe
+		casa.fillRect(0, 700, 1000, 30); // piso/tierra 
+		
+		casa.setColor(Color.decode("#957238"));//cremitaa  
+		casa.fillRect(0, 670, 1000, 30); // piso/tierra medio 
+		
+		casa.setColor(Color.decode("#D3AC6A"));//tierra superior
+		casa.fillRect(0, 640, 1000, 30); // piso/tierra superior 
+		
+		int x =0;
+		int y =370; 
+		int ancho =23; 
+		int anchoHorizontal =10; 
+		int separacion =20;
+
+		//cerca horizontal
+		for (int i = 0; i<6; i++) {
+		    casa.setColor(Color.decode("#AE7B2A"));
+		    casa.fillRect(x, y + i * (anchoHorizontal + separacion), 1000, anchoHorizontal); 
 		}
+
+		// cerca vertical
+		for (int i = 0; i<70; i++) {
+		    casa.setColor(Color.decode("#E0AB3B"));
+		    casa.fillRect(x + i * (ancho + separacion), y, ancho, 160);
+		}
+		
+		
+		
+		casa.setColor(Color.decode("#CCAF9F"));//rosa borde
+		casa.fillRect(240, 190, 520, 310);//borde casa
+		
+		casa.setColor(Color.decode("#FEE6DA"));//color casa
+		casa.fillRect(250, 200, 500, 300);//casita
+				
+				
+		casa.setColor(Color.decode("#764A34"));//color contorno puerta
+		casa.fillRect(300, 330, 100, 170);//contorno puerta
+				
+		casa.setColor(Color.decode("#955D40"));//color puerta
+		casa.fillRect(310, 340, 80,150);//puerta
+		
+		casa.setColor(Color.decode("#AC9A1F"));//color perilla
+		casa.fillOval(365, 398, 20, 19);//perilla puerta
+		
+		casa.setColor(Color.decode("#D3C143"));//color perilla
+		casa.fillOval(367, 400, 15, 15);//perilla puerta
+		
+		casa.setColor(Color.decode("#969696"));//color base
+		casa.fillRect(210, 500, 570, 30); // base casa 
+		
+		casa.setColor(Color.decode("#BEA7A7"));//color base
+		casa.fillRect(210, 140, 570, 50); // techo casa 
+		
+		casa.setColor(Color.decode("#818181"));//color chimenea
+		casa.fillRect(670, 90, 70, 50); // chimenea
+		
+		casa.setColor(Color.decode("#767676"));//color chimenea arriba
+		casa.fillRect(660, 70, 90, 20); // chimenea arriba
+		
+		casa.setColor(Color.decode("#767676"));//color barilla 1
+		casa.fillRect(300, 110, 5, 30); //barilla 1
+		
+		casa.setColor(Color.decode("#767676"));//color barilla 2
+		casa.fillRect(290, 100, 5, 40); //barilla 2
+		
+		casa.setColor(Color.decode("#9C9C9C"));//color ventana borde
+		casa.fillRect(480, 250, 200, 150); //borde ventana
+		
+		casa.setColor(Color.decode("#7FFFF8"));//Ventana
+		casa.fillRect(490, 260, 180, 130);//ventana
+		
+		casa.setColor(Color.decode("#9C9C9C"));//Ventana marco color
+		casa.fillRect(570, 260, 20, 140);//ventana marco
+		
 		
 	}
 	
