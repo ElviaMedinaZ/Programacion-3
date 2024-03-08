@@ -34,6 +34,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.util.Random;
 
 public class Ventana extends JFrame implements MouseListener{
 	//Atributos base
@@ -47,7 +48,7 @@ public class Ventana extends JFrame implements MouseListener{
 		//tamaños
 		this.setMinimumSize(new Dimension(250,250));
 		this.setMaximumSize(new Dimension(1000,270));
-		this.setResizable(true);
+		this.setResizable(false);
 		
 		
 		///////////////////////////////////////////////////////////////////////
@@ -215,7 +216,9 @@ public class Ventana extends JFrame implements MouseListener{
 		casa.setColor(Color.decode("#9C9C9C"));//Ventana marco color
 		casa.fillRect(570, 260, 20, 140);//ventana marco*/
 		
-		super.paint(g);
+		///////////////////////////////////////////////////////////// MARIO I //////////////////////////////
+		
+		/*super.paint(g);
 		Graphics2D mario = (Graphics2D)g;
 		
 		mario.setColor(Color.decode("#B3ECFA"));//azul
@@ -437,8 +440,333 @@ public class Ventana extends JFrame implements MouseListener{
 		
 		mario.setColor(Color.decode("#000000"));// tornillo 7.4 bloque der
 		mario.fillOval(932, 285, 10, 10);
+		*/
+		///////////////////////////////////////////////// MARIO II ////////////////////////////////
+		super.paint (g);
 		
+		Graphics2D mario2 = (Graphics2D)g;
+		
+		mario2.setColor(Color.decode("#0665C0"));//azul
+		mario2.fillRect(0, 0, 1000, 700); // cielo
+		
+		
+		mario2.setColor(Color.decode("#CED2DA")); //sombra de nube 1 arbusto
+		mario2.fillRoundRect(180, 498, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#EDF2FE")); //nube arbusto
+		mario2.fillRoundRect(180, 493, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#CED2DA")); //sombra nube 2
+		mario2.fillRoundRect(296, 530, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#EDF2FE")); // nube 2
+		mario2.fillRoundRect(296, 533, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#CED2DA")); //sombra  nube 3
+		mario2.fillRoundRect(270, 456, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#EDF2FE")); // nube 3
+		mario2.fillRoundRect(270, 451, 160, 40,50,50);
+
+		mario2.setColor(Color.decode("#91C2BF"));//montaña fondo 1 sombra
+		mario2.fillRoundRect(20, 175, 203, 500,200,250);
+		
+		mario2.setColor(Color.decode("#A8CAD0"));//montañafondo 1 sombra azul
+		mario2.fillRoundRect(28, 180, 190, 490,200,250);
+		
+		mario2.setColor(Color.decode("#B5D3D8"));//montaña fondo 1 B5D3D8
+		mario2.fillRoundRect(25, 180, 180, 490,190,250); 
+		
+		
+		
+		mario2.setColor(Color.decode("#CED2DA")); //sombra  nube 5
+		mario2.fillRoundRect(-50, 265, 200, 40,50,50);
+		
+		mario2.setColor(Color.decode("#EDF2FE")); // nube 5
+		mario2.fillRoundRect(-50, 260, 200, 40,50,50);
+		
+		
+		
+		mario2.setColor(Color.decode("#91C2BF"));//montaña fondo 2 sombra
+		mario2.fillRoundRect(357, 175, 208, 500,200,250);
+		
+		mario2.setColor(Color.decode("#A8CAD0"));//montañafondo 2 sombra azul
+		mario2.fillRoundRect(370, 180, 190, 490,200,250);
+		
+		mario2.setColor(Color.decode("#B5D3D8"));//montaña fondo 2 B5D3D8
+		mario2.fillRoundRect(360, 180, 180, 490,190,250); 
+		
+		
+		mario2.setColor(Color.decode("#CED2DA")); //sombra  nube 7
+		mario2.fillRoundRect(735, 242, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#EDF2FE")); // nube 7
+		mario2.fillRoundRect(735, 237, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#CED2DA")); //sombra  nube 8
+		mario2.fillRoundRect(770, 190, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#EDF2FE")); // nube 8
+		mario2.fillRoundRect(770, 185, 160, 40,50,50);
+		
+		
+		mario2.setColor(Color.decode("#91C2BF"));//montaña fondo 3 sombra
+		mario2.fillRoundRect(564, 105, 208, 500,200,250);
+		
+		mario2.setColor(Color.decode("#A8CAD0"));//montañafondo 3 sombra azul
+		mario2.fillRoundRect(567, 110, 190, 490,200,250);
+		
+		mario2.setColor(Color.decode("#B5D3D8"));//montaña fondo 3 B5D3D8
+		mario2.fillRoundRect(570, 110, 180, 490,190,250); 
+		
+		
+		mario2.setColor(Color.decode("#CED2DA")); //sombra  nube 4
+		mario2.fillRoundRect(221, 335, 200, 40,50,50);
+		
+		mario2.setColor(Color.decode("#EDF2FE")); // nube 4
+		mario2.fillRoundRect(221, 330, 200, 40,50,50);
+		
+		
+		
+		mario2.setColor(Color.decode("#0f4263"));//montaña 1 sombra
+		mario2.fillRoundRect(-85, 432, 250, 400,250,250);
+		
+		
+		mario2.setColor(Color.decode("#419CD5"));//montaña 1 sombra azul
+		mario2.fillRoundRect(-90, 435, 250, 400,250,250);
+		
+		
+		mario2.setColor(Color.decode("#76b2d7"));//montaña 1
+		mario2.fillRoundRect(-112, 437, 250, 400,250,250);
+
+		mario2.setColor(Color.decode("#CED2DA")); //sombra  nube 6
+		mario2.fillRoundRect(535, 388, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#EDF2FE")); // nube 6
+		mario2.fillRoundRect(535, 383, 160, 40,50,50);
+		
+		mario2.setColor(Color.decode("#0f4263"));//montaña 2 sombra
+		mario2.fillRoundRect(360, 440, 272, 800,250,250);
+		
+		mario2.setColor(Color.decode("#419CD5"));//montaña 2 sombra azul
+		mario2.fillRoundRect(370, 445, 258, 340,250,250);
+		
+		mario2.setColor(Color.decode("#76b2d7"));//montaña 2 azul clarito 
+		mario2.fillRoundRect(360, 445, 250, 400,250,250);
+		
+		mario2.setColor(Color.decode("#0f4263"));//montaña 3 sombra
+		mario2.fillRoundRect(630, 282, 240, 490,200,250);
+		
+		mario2.setColor(Color.decode("#419CD5"));//montaña 3 sombra azul
+		mario2.fillRoundRect(635, 287, 230, 400,200,250);
+		
+		mario2.setColor(Color.decode("#76b2d7"));//montaña 3
+		mario2.fillRoundRect(634, 290, 170, 400,200,250);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillRoundRect(780, 515, 160, 190,400,80);
+		
+		mario2.setColor(Color.BLACK);  //sombra bloque 1
+		mario2.fillRoundRect(848, 430, 55, 43,10,10);
+		
+		mario2.setColor(Color.decode("#818181"));  //bloque 1
+		mario2.fillRoundRect(851, 430, 50, 40,10,10);
+		
+		mario2.setColor(Color.decode("#979595"));  //bloque 1 sombra gris
+		mario2.fillRoundRect(851, 430, 40, 35,10,10);
+		
+		mario2.setColor(Color.BLACK);  //sombra bloque 2
+		mario2.fillRoundRect(848, 473, 55, 43,10,10);
+		
+		mario2.setColor(Color.decode("#818181"));  //bloque 2
+		mario2.fillRoundRect(851, 473, 50, 40,10,10);
+		
+		mario2.setColor(Color.decode("#979595"));  //bloque 2 sombra gris
+		mario2.fillRoundRect(851, 473, 40, 35,10,10);
+		
+		mario2.setColor(Color.BLACK);  //sombra bloque 3
+		mario2.fillRoundRect(848, 516, 55, 43,10,10);
+		
+		mario2.setColor(Color.decode("#818181"));  //bloque 3
+		mario2.fillRoundRect(851, 516, 50, 40,10,10);
+		
+		mario2.setColor(Color.decode("#979595"));  //bloque 3 sombra gris
+		mario2.fillRoundRect(851, 516, 40, 35,10,10);
+		
+		mario2.setColor(Color.BLACK);  //sombra bloque 4
+		mario2.fillRoundRect(848, 386, 55, 45,10,10);
+		
+		mario2.setColor(Color.decode("#818181"));  //bloque 4
+		mario2.fillRoundRect(851, 388, 50, 40,10,10);
+		
+		mario2.setColor(Color.decode("#979595"));  //bloque 1 sombra gris
+		mario2.fillRoundRect(851, 388, 40, 35,10,10);
+		
+		mario2.setColor(Color.BLACK);  //sombra bloque 5
+		mario2.fillRoundRect(902, 386, 55, 45,10,10);
+		
+		mario2.setColor(Color.decode("#CCA51B"));  //bloque 5 
+		mario2.fillRoundRect(905, 388, 50, 40,10,10);
+		
+		mario2.setColor(Color.decode("#FFD233"));  //bloque 5
+		mario2.fillRoundRect(905, 388, 40, 35,10,10);
+		
+		mario2.setColor(Color.BLACK);  //sombra bloque 6
+		mario2.fillRoundRect(956, 386, 55, 45,10,10);
+		
+		mario2.setColor(Color.decode("#CCA51B"));  //bloque 6
+		mario2.fillRoundRect(958, 388, 50, 40,10,10);
+		
+		mario2.setColor(Color.decode("#FFD233"));  //bloque 5
+		mario2.fillRoundRect(958, 388, 40, 35,10,10);
+		
+		
+		mario2.setColor(Color.BLACK);  //ojo izq bloque 5
+		mario2.fillRoundRect(913, 403, 10, 13,7,7);
+		
+		mario2.setColor(Color.BLACK);  //ojo der bloque 5
+		mario2.fillRoundRect(934, 403, 10, 13,7,7);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(61, 388, 20, 40);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(124, 327, 20, 40);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(121, 210, 20, 40);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(476, 240, 20, 40);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(394, 282, 20, 40);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(396, 398, 20, 40);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(600, 240, 20, 40);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(682, 167, 20, 40);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(716, 327, 20, 40);
+		
+		mario2.setColor(Color.WHITE);
+		mario2.fillOval(768, 477, 20, 40);
+		
+		
+		
+		mario2.setColor(Color.decode("#CF9E61")); //Tierra
+		mario2.fillRect(0, 600, 1000, 142); 
+		
+		
+        int columnas =33;
+        int circulosPorColumna =3;
+        int radio =4;
+        int separacionX =30; 
+        int separacionY =50; 
+
+        for (int i=0; i<columnas; i++) {
+            for (int j=0; j < circulosPorColumna; j++) {
+                int x=i * separacionX + 20; 
+                int y=j * separacionY + 610; 
+                mario2.setColor(Color.decode("#F4C76E")); //puntos piso
+                mario2.fillOval(x - radio, y - radio, radio * 2, radio * 2);
+            }
+        }
+        
+        try {
+			
+			BufferedImage image = ImageIO.read(new File("src/flor2.png"));
+			mario2.drawImage(image, 510, 390, null);
+		}catch(IOException e)
+		{
+			//TODO Auto-generated catch black
+			e.printStackTrace();
+		}
+        
+		
+		
+		mario2.setColor(Color.decode("#000000"));//sombra cuerpo tubo azul
+		mario2.fillRect(502, 450, 90, 150);
+		
+		mario2.setColor(Color.decode("#726fb6"));//cuerpo tubo azul
+		mario2.fillRect(507, 440, 80, 150);
+		
+		mario2.setColor(Color.decode("#d5d8fb"));//cuerpo tubo azul fuerte
+		mario2.fillRect(527, 460, 17, 130);
 	
+		mario2.setColor(Color.decode("#000000"));// sombra cabeza tubo azul
+		mario2.fillRoundRect(492, 435, 110, 50, 10, 10);
+		
+		mario2.setColor(Color.decode("#726fb6"));//cabeza tubo azul
+		mario2.fillRoundRect(497, 438, 100, 40,10,10);
+		
+		
+		
+		mario2.setColor(Color.decode("#000000"));//sombra cuerpo tubo azul
+		mario2.fillRect(910, 510, 82, 50);
+		
+		mario2.setColor(Color.decode("#726fb6"));//cuerpo tubo azul 
+		mario2.fillRect(917, 510, 70, 50);
+		
+		mario2.setColor(Color.decode("#000000"));// sombra cabeza tubo azul
+		mario2.fillRoundRect(900, 470, 170, 40, 10, 10);
+		
+		mario2.setColor(Color.decode("#726fb6"));//cabeza tubo azul
+		mario2.fillRoundRect(905, 475, 140, 30,10,10);
+		
+		mario2.setColor(Color.decode("#d5d8fb"));//brillo
+		mario2.fillRect(935, 510, 10, 50);
+		
+		mario2.setColor(Color.decode("#d5d8fb"));//brillo
+		mario2.fillRect(923,474, 10, 30);
+		
+		mario2.setColor(Color.decode("#d5d8fb"));//brillo
+		mario2.fillRect(512,438, 15, 40);
+		
+	    int x = 0;
+        int y = 565;
+        int diametro = 40;
+        int separacion = -10;
+        
+        // Dibuja los círculos
+        
+        for (int i = 0; i < 40; i++) {;
+            mario2.setColor(Color.decode("#07BD03")); 
+            mario2.fillOval(x + i * (diametro + separacion), y, diametro, diametro); 
+        }
+        
+        try {
+			
+			BufferedImage image = ImageIO.read(new File("src/arbustoxd.png"));
+			mario2.drawImage(image, 241, 535, null);
+		}catch(IOException e)
+		{
+			//TODO Auto-generated catch black
+			e.printStackTrace();
+		}
+        
+        try {
+			
+			BufferedImage image = ImageIO.read(new File("src/mario2.png"));
+			mario2.drawImage(image, 405, 470, null);
+		}catch(IOException e)
+		{
+			//TODO Auto-generated catch black
+			e.printStackTrace();
+		}
+        
+        mario2.setColor(Color.black);//pasto
+	    mario2.fillRect(0, 558, 1000, 10); // pasto
+	    
+	    mario2.setColor(Color.decode("#07BD03"));//pasto
+	    mario2.fillRect(0, 560, 1000, 30); // pasto
+	    
+        
 	}
 	
 	
