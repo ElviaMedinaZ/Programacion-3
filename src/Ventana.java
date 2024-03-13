@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -1871,14 +1872,33 @@ public void calculadora2() {
 				float b = rand.nextFloat();
 				
 				
-				JButton otroBoton = new JButton("Click me!");
+				JButton otroBoton = new JButton(r+","+g+","+b);
 				otroBoton.setBounds(x, y, w, h);
 				otroBoton.setOpaque(true);
 				otroBoton.setBackground(new Color (r,g,b));
 				btn_panel.add(otroBoton);
 				
+				
+				
+				otroBoton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) 
+					{
+						// TODO Auto-generated method stub
+						//JOptionPane.showMessageDialog(null, r+","+g+","+b,"Codigos de color",JOptionPane.WARNING_MESSAGE);
+					
+						String codigoColor = ((JButton) e.getSource()).getText();
+						JOptionPane.showMessageDialog(null,codigoColor, "Codigos de color", JOptionPane.WARNING_MESSAGE);
+					}
+					
+				});
+				
+				
 				getContentPane().repaint();
 				getContentPane().revalidate();
+				
+				
 				
 			}
 		});
