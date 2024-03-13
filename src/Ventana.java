@@ -790,8 +790,9 @@ public class Ventana extends JFrame implements MouseListener{
 		//this.calculadora2();
 		//this.calculadora3();;
 		
-		this.registroViejo();
-		this.loginViejo();
+		//this.registroViejo();
+		//this.loginViejo();
+		this.botones();
 		
 		this.repaint();
 		this.validate();
@@ -1801,6 +1802,7 @@ public void calculadora2() {
 		
 		
 	}
+	
 
 
 	@Override
@@ -1836,6 +1838,51 @@ public void calculadora2() {
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void botones()
+	{
+		
+		this.setSize(500,750);
+		JPanel btn_panel = new JPanel();
+		btn_panel.setSize(this.getWidth(), this.getHeight());
+		btn_panel.setLocation(0,0);
+		btn_panel.setBackground(Color.decode("#6DE19B"));
+		btn_panel.setLayout(null);
+		
+		JButton superBoton = new JButton("Click me!");
+		superBoton.setBounds(40, 530, 400, 60);
+		superBoton.setFont(new Font("Arial", Font.BOLD, 20));
+		btn_panel.add(superBoton);
+		
+		superBoton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int x = (int ) Math.floor(Math.random() *450+1);
+				int y =(int) Math.floor(Math.random()*650+1);
+				
+				int w =(int) Math.floor(Math.random()*120+1);
+				int h=(int) Math.floor(Math.random()*120+1);
+				
+				Random rand=new Random();
+				float r = rand.nextFloat();
+				float g = rand.nextFloat();
+				float b = rand.nextFloat();
+				
+				
+				JButton otroBoton = new JButton("Click me!");
+				otroBoton.setBounds(x, y, w, h);
+				otroBoton.setOpaque(true);
+				otroBoton.setBackground(new Color (r,g,b));
+				btn_panel.add(otroBoton);
+				
+				getContentPane().repaint();
+				getContentPane().revalidate();
+				
+			}
+		});
+		this.add(btn_panel);
 	}
 	
 }
