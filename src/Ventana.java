@@ -39,8 +39,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.util.Random;
 
-public class Ventana extends JFrame implements MouseListener{
+public class Ventana extends JFrame implements MouseListener  {
 	//Atributos base
+	JPanel btn_panel;
 	public Ventana() {
 		
 		this.setSize(1000, 750);//Tamaño de la ventana
@@ -75,7 +76,7 @@ public class Ventana extends JFrame implements MouseListener{
 		
 		this.iniciarComponentes();//Agrega los componentes
 		this.setVisible(true);
-		this.addMouseListener(this);
+		
 	}
 	
 	
@@ -794,6 +795,7 @@ public class Ventana extends JFrame implements MouseListener{
 		//this.registroViejo();
 		//this.loginViejo();
 		this.botones();
+		addMouseListener(this);
 		
 		this.repaint();
 		this.validate();
@@ -1804,51 +1806,15 @@ public void calculadora2() {
 		
 	}
 	
-
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println(e.getX());
-		System.out.println(e.getY());
-	}
-
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public void botones()
 	{
 		
 		this.setSize(500,750);
-		JPanel btn_panel = new JPanel();
+		btn_panel = new JPanel();
 		btn_panel.setSize(this.getWidth(), this.getHeight());
 		btn_panel.setLocation(0,0);
-		btn_panel.setBackground(Color.decode("#6DE19B"));
+		btn_panel.setBackground(Color.decode("#E5C9F9"));
 		btn_panel.setLayout(null);
 		
 		JButton superBoton = new JButton("Click me!");
@@ -1895,6 +1861,7 @@ public void calculadora2() {
 				});
 				
 				
+				
 				getContentPane().repaint();
 				getContentPane().revalidate();
 				
@@ -1902,7 +1869,76 @@ public void calculadora2() {
 				
 			}
 		});
+		
+		
 		this.add(btn_panel);
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+		int w =(int) Math.floor(Math.random()*120+1);
+		int h=(int) Math.floor(Math.random()*120+1);
+		
+		Random rand=new Random();
+		float r = rand.nextFloat();
+		float g = rand.nextFloat();
+		float b = rand.nextFloat();
+		
+		
+		JButton otroBoton = new JButton(r+","+g+","+b);
+		otroBoton.setBounds(e.getX(), e.getY(), w, h);
+		otroBoton.setOpaque(true);
+		otroBoton.setBackground(new Color (r,g,b));
+		btn_panel.add(otroBoton);
+		
+		
+		
+		otroBoton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				// TODO Auto-generated method stub
+				//JOptionPane.showMessageDialog(null, r+","+g+","+b,"Codigos de color",JOptionPane.WARNING_MESSAGE);
+			
+				String codigoColor = ((JButton) e.getSource()).getText();
+				JOptionPane.showMessageDialog(null,codigoColor, "Codigos de color", JOptionPane.WARNING_MESSAGE);
+			}
+			
+		});
+		this.repaint();
+		this.validate();
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
