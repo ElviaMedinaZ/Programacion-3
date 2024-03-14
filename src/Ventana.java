@@ -1940,6 +1940,14 @@ public void calculadora2() {
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+		// create object of Random class
+		Random colorPanel = new Random();
+		int rand_num = colorPanel.nextInt(0xffffff + 1);
+		// format it as hexadecimal string and print
+		String colorCode = String.format("#%06x", rand_num);
+		
+		btn_panel.setBackground(Color.decode(colorCode));
+		
 	}
 
 
