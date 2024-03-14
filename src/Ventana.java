@@ -1818,6 +1818,9 @@ public void calculadora2() {
 		btn_panel.setLayout(null);
 		
 		JButton superBoton = new JButton("Click me!");
+		
+		
+		
 		superBoton.setBounds(40, 530, 400, 60);
 		superBoton.setFont(new Font("Arial", Font.BOLD, 20));
 		btn_panel.add(superBoton);
@@ -1845,31 +1848,30 @@ public void calculadora2() {
 				btn_panel.add(otroBoton);
 				
 				
-				
 				otroBoton.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{
 						// TODO Auto-generated method stub
-						//JOptionPane.showMessageDialog(null, r+","+g+","+b,"Codigos de color",JOptionPane.WARNING_MESSAGE);
-					
-						String codigoColor = ((JButton) e.getSource()).getText();
-						JOptionPane.showMessageDialog(null,codigoColor, "Codigos de color", JOptionPane.WARNING_MESSAGE);
+						JButton yo = ((JButton) e.getSource());
+						btn_panel.remove(yo);
+						
+						getContentPane().repaint();
+						getContentPane().revalidate();
+						
 					}
-					
 				});
 				
-				
+				btn_panel.add(otroBoton);	
 				
 				getContentPane().repaint();
 				getContentPane().revalidate();
 				
-				
-				
 			}
+
 		});
-		
+				
 		
 		this.add(btn_panel);
 	}
@@ -1910,9 +1912,15 @@ public void calculadora2() {
 			{
 				// TODO Auto-generated method stub
 				//JOptionPane.showMessageDialog(null, r+","+g+","+b,"Codigos de color",JOptionPane.WARNING_MESSAGE);
-			
-				String codigoColor = ((JButton) e.getSource()).getText();
-				JOptionPane.showMessageDialog(null,codigoColor, "Codigos de color", JOptionPane.WARNING_MESSAGE);
+				JButton yo = ((JButton) e.getSource());
+				String command = ((JButton) e.getSource()).getText();
+				btn_panel.remove(yo);
+				
+				getContentPane().repaint();
+				getContentPane().revalidate();
+				
+				//String command = ((JButton) e.getSource()).getText();
+				//JOptionPane.showMessageDialog(null,command, "Codigos de color", JOptionPane.WARNING_MESSAGE);
 			}
 			
 		});
