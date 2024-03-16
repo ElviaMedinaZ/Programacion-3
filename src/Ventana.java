@@ -1,6 +1,7 @@
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -1971,12 +1972,27 @@ public void calculadora2() {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
-		System.out.print(e.getKeyCode() + " " +  e.getKeyChar()+"\n");
+		System.out.print(e.getKeyCode() + " " +  e.getKeyChar()+"\n"); //tecla presioanda
 		if(e.getKeyCode()==8) 
 		{
 			btn_panel.removeAll();
 			getContentPane().repaint();
 			getContentPane().revalidate();
+		}
+		if(e.getKeyCode()==87) // la w
+		{
+			Component[] elementos = btn_panel.getComponents();
+			for (int i =0;i<elementos.length;i++)
+			{
+				if(elementos[i].getClass().toString().equals("class javax.swing.JButton")) 
+				{
+					JButton btnTamano=((JButton)elementos[i]);
+					btnTamano.setSize(btnTamano.getHeight()+12,btnTamano.getWidth()+12);//incrementa altura, ancho
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				}
+				
+			}
 		}
 		
 	}
