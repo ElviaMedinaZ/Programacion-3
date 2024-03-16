@@ -9,6 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -39,16 +41,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.util.Random;
 
-public class Ventana extends JFrame implements MouseListener  {
+public class Ventana extends JFrame implements MouseListener,KeyListener  {
 	//Atributos base
 	JPanel btn_panel;
-	public Ventana() {
+public Ventana() {
 		
+		this.setVisible(true);
 		this.setSize(1000, 750);//Tamaño de la ventana
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//cerrar
 		this.setTitle("Ventana"); //Titulo
 
-		
 		//tamaños
 		this.setMinimumSize(new Dimension(250,250));
 		this.setMaximumSize(new Dimension(1000,270));
@@ -75,7 +77,9 @@ public class Ventana extends JFrame implements MouseListener  {
 		this.setLocationRelativeTo(null);//centrar
 		
 		this.iniciarComponentes();//Agrega los componentes
-		this.setVisible(true);
+		
+		this.addMouseListener(this);
+		this.addKeyListener(this);
 		
 	}
 	
@@ -795,8 +799,6 @@ public class Ventana extends JFrame implements MouseListener  {
 		//this.registroViejo();
 		//this.loginViejo();
 		this.botones();
-		addMouseListener(this);
-		
 		this.repaint();
 		this.validate();
 	}
@@ -1953,6 +1955,35 @@ public void calculadora2() {
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+		System.out.print(e.getKeyCode() + " " +  e.getKeyChar()+"\n");
+		if(e.getKeyCode()==8) 
+		{
+			btn_panel.removeAll();
+			getContentPane().repaint();
+			getContentPane().revalidate();
+		}
+		
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
