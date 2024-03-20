@@ -1971,22 +1971,25 @@ public void calculadora2() {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
 		System.out.print(e.getKeyCode() + " " +  e.getKeyChar()+"\n"); //tecla presioanda
+		
 		if(e.getKeyCode()==8) 
 		{
 			btn_panel.removeAll();
 			getContentPane().repaint();
 			getContentPane().revalidate();
 		}
+		
 		if(e.getKeyCode()==87) // la w
 		{
 			Component[] elementos = btn_panel.getComponents();
+			
 			for (int i =0;i<elementos.length;i++)
 			{
 				if(elementos[i].getClass().toString().equals("class javax.swing.JButton")) 
 				{
 					JButton btnTamano=((JButton)elementos[i]);
+					
 					btnTamano.setSize(btnTamano.getHeight()+12,btnTamano.getWidth()+12);//incrementa altura, ancho
 					getContentPane().repaint();
 					getContentPane().revalidate();
@@ -1995,7 +1998,91 @@ public void calculadora2() {
 			}
 		}
 		
+		switch (e.getKeyCode()) 
+		{
+		
+		case 37: //flecha izquierda
+			
+			Component[] elementosIzq = btn_panel.getComponents();
+			
+			for (int i =0;i<elementosIzq.length;i++)
+			{
+				if(elementosIzq[i].getClass().toString().equals("class javax.swing.JButton")) 
+				{
+					JButton btn=((JButton)elementosIzq[i]);
+					
+					btn.setLocation(btn.getX()-15,btn.getY());// permite el movimiento xd
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				}	
+			}
+			
+			
+			break;
+			
+			
+		case 38: //flecha arriba
+			
+			Component[] elementosArriba=btn_panel.getComponents();
+			
+			for (int i =0;i<elementosArriba.length;i++)
+			{
+				if(elementosArriba[i].getClass().toString().equals("class javax.swing.JButton")) 
+				{
+					JButton btn=((JButton)elementosArriba[i]);
+					
+					btn.setLocation(btn.getX(),btn.getY()-15);
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				}	
+			}
+			
+			break;
+		
+			
+		case 39: //flecha derecha
+			
+			Component[] elementosDer=btn_panel.getComponents();
+			
+			for (int i =0;i<elementosDer.length;i++)
+			{
+				if(elementosDer[i].getClass().toString().equals("class javax.swing.JButton")) 
+				{
+					JButton btn=((JButton)elementosDer[i]);
+					
+					btn.setLocation(btn.getX()+15,btn.getY()); 
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				}	
+			}
+			
+			break;
+			
+		
+		case 40: //flecha abajo
+			Component[] elementosAbajo=btn_panel.getComponents();
+			
+			for (int i =0;i<elementosAbajo.length;i++)
+			{
+				if(elementosAbajo[i].getClass().toString().equals("class javax.swing.JButton")) 
+				{
+					JButton btn=((JButton)elementosAbajo[i]);
+					
+					btn.setLocation(btn.getX(),btn.getY()+15);
+					getContentPane().repaint();
+					getContentPane().revalidate();
+				}	
+			}
+			
+			break;
+	
+		}
+		
 	}
+
+	    
+	
+	
 
 
 	@Override
