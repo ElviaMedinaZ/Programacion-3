@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.UIManager;
 
 public class juegoGato {
 
@@ -33,6 +34,8 @@ public class juegoGato {
 	private JButton btnNewButton_6;
 	private JButton btnNewButton_7;
 	private JButton btnNewButton_8;
+	private JLabel puntosX;
+	private JLabel puntosO;
 
 	/**
 	 * Launch the application.
@@ -71,15 +74,19 @@ public class juegoGato {
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
 		panel_1 = new JPanel();
+		panel_1.setBackground(new Color(176, 196, 222));
 		frame.getContentPane().add(panel_1, "name_3389945802100");
 		panel_1.setLayout(null);
 		
 		panel = new JPanel();
+		panel.setForeground(Color.BLACK);
+		panel.setBackground(new Color(230, 230, 250));
 		panel.setBounds(24, 56, 388, 236);
 		panel_1.add(panel);
 		panel.setLayout(new GridLayout(3, 3, 0, 0));
 		
 		btnNewButton = new JButton("");
+		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				click(btnNewButton);
@@ -89,6 +96,7 @@ public class juegoGato {
 		panel.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("");
+		btnNewButton_1.setForeground(Color.BLACK);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				click(btnNewButton_1);
@@ -98,6 +106,7 @@ public class juegoGato {
 		panel.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("");
+		btnNewButton_2.setForeground(Color.BLACK);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				click(btnNewButton_2);
@@ -108,6 +117,7 @@ public class juegoGato {
 		panel.add(btnNewButton_2);
 		
 		btnNewButton_3 = new JButton("");
+		btnNewButton_3.setForeground(Color.BLACK);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				click(btnNewButton_3);
@@ -128,6 +138,7 @@ public class juegoGato {
 		panel.add(btnNewButton_4);
 		
 		btnNewButton_5 = new JButton("");
+		btnNewButton_5.setForeground(Color.BLACK);
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				click(btnNewButton_5);
@@ -137,6 +148,7 @@ public class juegoGato {
 		panel.add(btnNewButton_5);
 		
 		btnNewButton_6 = new JButton("");
+		btnNewButton_6.setForeground(Color.BLACK);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				click(btnNewButton_6);
@@ -146,6 +158,7 @@ public class juegoGato {
 		panel.add(btnNewButton_6);
 		
 		btnNewButton_7 = new JButton("");
+		btnNewButton_7.setForeground(Color.BLACK);
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				click(btnNewButton_7);
@@ -155,6 +168,7 @@ public class juegoGato {
 		panel.add(btnNewButton_7);
 		
 		btnNewButton_8 = new JButton("");
+		btnNewButton_8.setForeground(Color.BLACK);
 		btnNewButton_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				click(btnNewButton_8);
@@ -164,6 +178,8 @@ public class juegoGato {
 		panel.add(btnNewButton_8);
 		
 		JButton btnReiniciar = new JButton("Reiniciar");
+		btnReiniciar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnReiniciar.setBackground(new Color(173, 216, 230));
 		btnReiniciar.setBounds(24, 306, 388, 42);
 		panel_1.add(btnReiniciar);
 		
@@ -179,7 +195,7 @@ public class juegoGato {
 					if(elementos[i].getClass().toString().equals("class javax.swing.JButton")) 
 					{
 						JButton btn=((JButton)elementos[i]);
-						btn.setText(null);
+						btn.setText("");
 						btn.setEnabled(true);
 						btn.setBackground(null);
 					}
@@ -188,25 +204,30 @@ public class juegoGato {
 			
 		});
 		
-		JLabel lblNewLabel = new JLabel("X =");
-		lblNewLabel.setBounds(30, 31, 46, 14);
-		panel_1.add(lblNewLabel);
+		puntosX = new JLabel("X =0");
+		puntosX.setFont(new Font("Tahoma", Font.BOLD, 14));
+		puntosX.setBounds(30, 31, 46, 14);
+		panel_1.add(puntosX);
 		
-		JLabel lblNewLabel_1 = new JLabel("0");
-		lblNewLabel_1.setBounds(51, 31, 46, 14);
-		panel_1.add(lblNewLabel_1);
 		
-		JLabel lblO = new JLabel("O =");
-		lblO.setBounds(237, 31, 46, 14);
-		panel_1.add(lblO);
-		
-		JLabel lblNewLabel_2 = new JLabel("0");
-		lblNewLabel_2.setBounds(263, 31, 46, 14);
-		panel_1.add(lblNewLabel_2);
+		puntosO = new JLabel("O = 0");
+		puntosO.setFont(new Font("Tahoma", Font.BOLD, 14));
+		puntosO.setBounds(237, 31, 46, 14);
+		panel_1.add(puntosO);
 		
 		
 		
 	}
+	
+	void puntosObtenidos(String wins) {
+        if (wins.equals("X")) {
+            x_cont++;
+            puntosX.setText("X = " + x_cont);
+        } else if (wins.equals("O")) {
+            o_cont++;
+            puntosO.setText("O = " + o_cont);
+        }
+    }
 		
 	public void click(JButton btn) {
 					
@@ -216,10 +237,13 @@ public class juegoGato {
 			
 			
 			if(turno) {
+				btn.setForeground(Color.BLACK);
 				btn.setText("O");
 				btn.setBackground(Color.decode("#D5BCF0"));
+				
 				turno=false;
 			}else {
+				btn.setForeground(Color.BLACK);
 				btn.setText("X");
 				btn.setBackground(Color.decode("#74B4C9"));
 				turno=true;
@@ -232,7 +256,7 @@ public class juegoGato {
 				&& !btnNewButton.getText().equals(""))  {
 
 				JOptionPane.showMessageDialog(null, "Haz ganado", "Felicidades!!", JOptionPane.WARNING_MESSAGE);
-			
+				puntosObtenidos(btn.getText());
 				
 		}
 		
@@ -243,6 +267,7 @@ public class juegoGato {
 				&& !btnNewButton.getText().equals(""))  {
 
 				JOptionPane.showMessageDialog(null,"Ganaste, eres genial :)", "Felicidades!!", JOptionPane.WARNING_MESSAGE);
+				puntosObtenidos(btn.getText());
 			
 				
 		}
@@ -253,6 +278,7 @@ public class juegoGato {
 				&& !btnNewButton_3.getText().equals(""))  {
 
 				JOptionPane.showMessageDialog(null, "Ganaste, eres genial :)", "Felicidades!!", JOptionPane.WARNING_MESSAGE);
+				puntosObtenidos(btn.getText());
 				
 		}
 		
@@ -261,6 +287,7 @@ public class juegoGato {
 				&& !btnNewButton_6.getText().equals(""))  {
 
 				JOptionPane.showMessageDialog(null, "Ganaste, eres genial :)", "Felicidades!!", JOptionPane.WARNING_MESSAGE);
+				puntosObtenidos(btn.getText());
 				
 		}
 		
@@ -269,6 +296,7 @@ public class juegoGato {
 				&& !btnNewButton.getText().equals(""))  {
 
 				JOptionPane.showMessageDialog(null, "Ganaste, eres genial :)", "Felicidades!!", JOptionPane.WARNING_MESSAGE);
+				puntosObtenidos(btn.getText());
 				
 		}
 		
@@ -277,6 +305,7 @@ public class juegoGato {
 				&& !btnNewButton_1.getText().equals(""))  {
 
 				JOptionPane.showMessageDialog(null, "Ganaste, eres genial :)", "Felicidades!!", JOptionPane.WARNING_MESSAGE);
+				puntosObtenidos(btn.getText());
 				
 		}
 		
@@ -285,6 +314,7 @@ public class juegoGato {
 				&& !btnNewButton_2.getText().equals(""))  {
 
 				JOptionPane.showMessageDialog(null,"Ganaste, eres genial :)", "Felicidades!!", JOptionPane.WARNING_MESSAGE);
+				puntosObtenidos(btn.getText());
 				
 		
 		}
@@ -294,6 +324,7 @@ public class juegoGato {
 				&& !btnNewButton.getText().equals(""))  {
 
 				JOptionPane.showMessageDialog(null,"Ganaste, eres genial :)", "Felicidades!!", JOptionPane.WARNING_MESSAGE);
+				puntosObtenidos(btn.getText());
 				
 		}
 				
@@ -302,6 +333,7 @@ public class juegoGato {
 			&& !btnNewButton_6.getText().equals(""))  {
 
 			JOptionPane.showMessageDialog(null,"Ganaste, eres genial :)", "Felicidades!!", JOptionPane.WARNING_MESSAGE);
+			puntosObtenidos(btn.getText());
 						
 		}		
 				
