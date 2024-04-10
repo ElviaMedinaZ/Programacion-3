@@ -41,10 +41,6 @@ public class login_registro {
 	private JPanel panelCenterLog;
 	private JTextField textFieldUsuario;
 	private JTextField textField;
-	
-	private CardLayout cardLayout; 
-	private JMenuItem mntmRegistro;
-    private JMenuItem mntmLoginLog;
 
 	/**
 	 * Launch the application.
@@ -75,182 +71,257 @@ public class login_registro {
 	 */
 	private void initialize() {
         frmVentana = new JFrame();
-        frmVentana.setTitle("Inicio de sesión");
+        frmVentana.setBackground(SystemColor.menu);
+        frmVentana.setTitle("ventana");
         frmVentana.setBounds(100, 100, 604, 760);
         frmVentana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        cardLayout = new CardLayout();
-        frmVentana.getContentPane().setLayout(cardLayout);
+        
+        login(frmVentana);
+        registro(frmVentana);
+        recuperarCuenta(frmVentana);
         
         
         
         
         /////////////////////////////////////////////// PANELES //////////////////////////////////
         
-        JPanel panelRegistrarse = new JPanel();
-        panelRegistrarse.setBackground(new Color(153, 102, 204));
-        frmVentana.getContentPane().add(panelRegistrarse,"registrarse");
-        panelRegistrarse.setLayout(new BorderLayout(0, 0));
         
-        JPanel panelNorth = new JPanel();
-        panelNorth.setBackground(SystemColor.menu);
-        panelRegistrarse.add(panelNorth, BorderLayout.NORTH);
-        panelNorth.setLayout(new FlowLayout(FlowLayout.LEFT)); 
-        
-        JPanel panelWest = new JPanel();
-        panelWest.setBackground(new Color(0, 102, 153));
-        panelRegistrarse.add(panelWest, BorderLayout.WEST);
-        
-        JPanel panelEast = new JPanel();
-        panelEast.setBackground(new Color(0, 102, 153));
-        panelRegistrarse.add(panelEast, BorderLayout.EAST);
-        
-        JPanel panelSouth = new JPanel();
-        panelSouth.setBackground(new Color(0, 102, 153));
-        panelRegistrarse.add(panelSouth, BorderLayout.SOUTH);
-        
-        JPanel panelCenter = new JPanel();
-        panelCenter.setBackground(new Color(0, 102, 153));
-        panelRegistrarse.add(panelCenter, BorderLayout.CENTER);
-        panelCenter.setLayout(new GridLayout(0, 1, 0, 0));
-        
-        //////////////////////////////////////////// MENU ////////////////////////////////
         JMenuBar menuBar = new JMenuBar();
-        panelNorth.add(menuBar);
+        menuBar.setBackground(SystemColor.menu);
+        frmVentana.setJMenuBar(menuBar);
+        
+        
+        //MENU CUENTA
+        
+        JMenu mnCuenta = new JMenu("Cuenta");
+        menuBar.add(mnCuenta);
+        
+        JMenuItem mntmLogin = new JMenuItem("Login");
+        mntmLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmVentana.getContentPane().removeAll();
+				login(frmVentana);
+				frmVentana.validate();
+				frmVentana.repaint();
+			}
+		});
+        mnCuenta.add(mntmLogin);
+        
+        JMenuItem mntmNewMenuItem = new JMenuItem("Registro");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmVentana.getContentPane().removeAll();
+				registro(frmVentana);
+				frmVentana.validate();
+				frmVentana.repaint();
+			}
+		});
+        mnCuenta.add(mntmNewMenuItem);
+        
+        
+        /////////// RECUPERACION DE CUENTA ///////////////////////////////////////
+        
+        JMenuItem mntmRecuperacionCuenta = new JMenuItem("Recuperación de cuenta");
+        mntmRecuperacionCuenta.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        mntmRecuperacionCuenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmVentana.getContentPane().removeAll();
+				recuperarCuenta(frmVentana);
+				frmVentana.validate();
+				frmVentana.repaint();
+			}
+		});
+        
+        mnCuenta.add(mntmRecuperacionCuenta);
         
         JMenu mnUsuarios = new JMenu("Usuarios");
         menuBar.add(mnUsuarios);
         
-        JMenuItem mntmLogin = new JMenuItem("Login");
+        JMenuItem mntmAlta = new JMenuItem("Alta");
+        mnUsuarios.add(mntmAlta);
         
+        JMenuItem mntmBaja = new JMenuItem("Baja");
+        mnUsuarios.add(mntmBaja);
         
-        mnUsuarios.add(mntmLogin);
+        JMenuItem mntmConsultar = new JMenuItem("Consultar");
+        mnUsuarios.add(mntmConsultar);
         
+        JMenu mnAyuda = new JMenu("Ayuda");
+        menuBar.add(mnAyuda);
         
-        JMenuItem mntmRegistrar = new JMenuItem("Registrar");
-        mnUsuarios.add(mntmRegistrar);
+        JMenuItem mntmComoCrearUsr = new JMenuItem("¿Cómo crear un usuario?");
+        mnAyuda.add(mntmComoCrearUsr);
         
-        ////////////////////////////////////////////////////////////////////////
+        JMenuItem mntmAccederSis = new JMenuItem("¿Cómo acceder al sistema?");
+        mnAyuda.add(mntmAccederSis);
         
-        JLabel lblNewLabel = new JLabel("                 ");
-        panelWest.add(lblNewLabel);
-              
-        JLabel lblNewLabel_1 = new JLabel("                 ");
-        panelEast.add(lblNewLabel_1);
-        
-        JLabel lblNewLabel_2 = new JLabel("                 ");
-        panelSouth.add(lblNewLabel_2);
-        
-        JLabel lblRegistrarse = new JLabel(" Registrarse");
-        lblRegistrarse.setHorizontalAlignment(SwingConstants.CENTER);
-        lblRegistrarse.setFont(new Font("Arial", Font.BOLD, 40));
-        lblRegistrarse.setForeground(Color.WHITE);
-        panelCenter.add(lblRegistrarse);
-        
-        JLabel lblNombre = new JLabel("Nombre");
-        lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        lblNombre.setForeground(Color.WHITE);
-        panelCenter.add(lblNombre);
-        
-        textFieldNombre = new JTextField();
-        textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        panelCenter.add(textFieldNombre);
-        textFieldNombre.setColumns(10);
-        
-        JLabel lblApellido = new JLabel("Apellido Paterno");
-        lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        lblApellido.setForeground(Color.WHITE);
-        panelCenter.add(lblApellido);
-        
-        txtFieldApellido = new JTextField();
-        txtFieldApellido.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        txtFieldApellido.setColumns(10);
-        panelCenter.add(txtFieldApellido);
-        
-        JLabel lblApellidoMaterno = new JLabel("Apellido Materno:");
-        lblApellidoMaterno.setForeground(Color.WHITE);
-        lblApellidoMaterno.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        panelCenter.add(lblApellidoMaterno);
-        
-        ApellidoMaterno = new JTextField();
-        ApellidoMaterno.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        ApellidoMaterno.setColumns(10);
-        panelCenter.add(ApellidoMaterno);
-        
-        JLabel lblCorreo = new JLabel("Correo electrónico");
-        lblCorreo.setForeground(Color.WHITE);
-        lblCorreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        panelCenter.add(lblCorreo);
-        
-        txtFieldCorreo = new JTextField();
-        txtFieldCorreo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        txtFieldCorreo.setColumns(10);
-        panelCenter.add(txtFieldCorreo);
-        
-        JLabel lblContraseña = new JLabel("Contraseña");
-        lblContraseña.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        lblContraseña.setForeground(Color.WHITE);
-        panelCenter.add(lblContraseña);
-        
-        fieldContra = new JPasswordField();
-        fieldContra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        panelCenter.add(fieldContra);
-        
-        JLabel lblConfirmarContra = new JLabel("Confirmar contraseña");
-        lblConfirmarContra.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        lblConfirmarContra.setForeground(Color.WHITE);
-        panelCenter.add(lblConfirmarContra);
-        
-        fieldConfirmarContra = new JPasswordField();
-        fieldConfirmarContra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        panelCenter.add(fieldConfirmarContra);
-        
-        JCheckBox chckbxTerminos = new JCheckBox("Acepto los términos y condiciones, vendo mi alma al diablo.");
-        chckbxTerminos.setSelected(true);
-        chckbxTerminos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        chckbxTerminos.setForeground(Color.WHITE);
-        chckbxTerminos.setOpaque(false);
-        
-        panelCenter.add(chckbxTerminos);
-        
-        JButton btnRegistrarse = new JButton("Registrarse");
-        btnRegistrarse.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        				
-				String contra = new String(fieldContra.getPassword());
-				String contraConf = new String(fieldConfirmarContra.getPassword());
+        JMenuItem mntmOlvidarContra = new JMenuItem("¿Qué pasa si olvidé mi contraseña?");
+        mnAyuda.add(mntmOlvidarContra);
+       
+    
+    }
+	
+	public void registro(JFrame frame)
+	{
+		 JPanel panelRegistrarse = new JPanel();
+	        panelRegistrarse.setBackground(new Color(153, 102, 204));
+	        frmVentana.getContentPane().add(panelRegistrarse, "name_15220231935500");
+	        panelRegistrarse.setLayout(new BorderLayout(0, 0));
+	        
+	        JPanel panelNorth = new JPanel();
+	        panelNorth.setBackground(new Color(0, 102, 153));
+	        panelRegistrarse.add(panelNorth, BorderLayout.NORTH);
+	        panelNorth.setLayout(new FlowLayout(FlowLayout.LEFT)); 
+	        
+	        JPanel panelWest = new JPanel();
+	        panelWest.setBackground(new Color(0, 102, 153));
+	        panelRegistrarse.add(panelWest, BorderLayout.WEST);
+	        
+	        JPanel panelEast = new JPanel();
+	        panelEast.setBackground(new Color(0, 102, 153));
+	        panelRegistrarse.add(panelEast, BorderLayout.EAST);
+	        
+	        JPanel panelSouth = new JPanel();
+	        panelSouth.setBackground(new Color(0, 102, 153));
+	        panelRegistrarse.add(panelSouth, BorderLayout.SOUTH);
+	        
+	        JPanel panelCenter = new JPanel();
+	        panelCenter.setBackground(new Color(0, 102, 153));
+	        panelRegistrarse.add(panelCenter, BorderLayout.CENTER);
+	        panelCenter.setLayout(new GridLayout(0, 1, 0, 0));
+	        
+	        ////////////////////////////////////////////////////////////////////////
+	        
+	        JLabel lblNewLabel = new JLabel("                 ");
+	        panelWest.add(lblNewLabel);
+	              
+	        JLabel lblNewLabel_1 = new JLabel("                 ");
+	        panelEast.add(lblNewLabel_1);
+	        
+	        JLabel lblNewLabel_2 = new JLabel("                 ");
+	        panelSouth.add(lblNewLabel_2);
+	        
+	        JLabel lblRegistrarse = new JLabel(" Registrarse");
+	        lblRegistrarse.setHorizontalAlignment(SwingConstants.CENTER);
+	        lblRegistrarse.setFont(new Font("Arial", Font.BOLD, 40));
+	        lblRegistrarse.setForeground(Color.WHITE);
+	        panelCenter.add(lblRegistrarse);
+	        
+	        JLabel lblNombre = new JLabel("Nombre");
+	        lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
+	        lblNombre.setForeground(Color.WHITE);
+	        panelCenter.add(lblNombre);
+	        
+	        textFieldNombre = new JTextField();
+	        textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	        panelCenter.add(textFieldNombre);
+	        textFieldNombre.setColumns(10);
+	        
+	        JLabel lblApellido = new JLabel("Apellido Paterno");
+	        lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 16));
+	        lblApellido.setForeground(Color.WHITE);
+	        panelCenter.add(lblApellido);
+	        
+	        txtFieldApellido = new JTextField();
+	        txtFieldApellido.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	        txtFieldApellido.setColumns(10);
+	        panelCenter.add(txtFieldApellido);
+	        
+	        JLabel lblApellidoMaterno = new JLabel("Apellido Materno:");
+	        lblApellidoMaterno.setForeground(Color.WHITE);
+	        lblApellidoMaterno.setFont(new Font("Tahoma", Font.PLAIN, 16));
+	        panelCenter.add(lblApellidoMaterno);
+	        
+	        ApellidoMaterno = new JTextField();
+	        ApellidoMaterno.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	        ApellidoMaterno.setColumns(10);
+	        panelCenter.add(ApellidoMaterno);
+	        
+	        JLabel lblCorreo = new JLabel("Correo electrónico");
+	        lblCorreo.setForeground(Color.WHITE);
+	        lblCorreo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+	        panelCenter.add(lblCorreo);
+	        
+	        txtFieldCorreo = new JTextField();
+	        txtFieldCorreo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	        txtFieldCorreo.setColumns(10);
+	        panelCenter.add(txtFieldCorreo);
+	        
+	        JLabel lblContraseña = new JLabel("Contraseña");
+	        lblContraseña.setFont(new Font("Tahoma", Font.PLAIN, 16));
+	        lblContraseña.setForeground(Color.WHITE);
+	        panelCenter.add(lblContraseña);
+	        
+	        fieldContra = new JPasswordField();
+	        fieldContra.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	        panelCenter.add(fieldContra);
+	        
+	        JLabel lblConfirmarContra = new JLabel("Confirmar contraseña");
+	        lblConfirmarContra.setFont(new Font("Tahoma", Font.PLAIN, 16));
+	        lblConfirmarContra.setForeground(Color.WHITE);
+	        panelCenter.add(lblConfirmarContra);
+	        
+	        fieldConfirmarContra = new JPasswordField();
+	        fieldConfirmarContra.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	        panelCenter.add(fieldConfirmarContra);
+	        
+	        JCheckBox chckbxTerminos = new JCheckBox("Acepto los términos y condiciones, vendo mi alma al diablo.");
+	        chckbxTerminos.setSelected(true);
+	        chckbxTerminos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+	        chckbxTerminos.setForeground(Color.WHITE);
+	        chckbxTerminos.setOpaque(false);
+	        
+	        panelCenter.add(chckbxTerminos);
+	        
+	        JButton btnRegistrarse = new JButton("Registrarse");
+	        btnRegistrarse.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        				
+					String contra = new String(fieldContra.getPassword());
+					String contraConf = new String(fieldConfirmarContra.getPassword());
 
-				if (contra.equals(contraConf)) 
-				{
-					fieldContra.setBorder(BorderFactory.createLineBorder(Color.green,2));
-					fieldConfirmarContra.setBorder(BorderFactory.createLineBorder(Color.green,2));
-					JOptionPane.showMessageDialog(frmVentana, "Success", "Registro ", JOptionPane.INFORMATION_MESSAGE);
-                }
+					if (contra.equals(contraConf)) 
+					{
+						fieldContra.setBorder(BorderFactory.createLineBorder(Color.green,2));
+						fieldConfirmarContra.setBorder(BorderFactory.createLineBorder(Color.green,2));
+						JOptionPane.showMessageDialog(frmVentana, "Success", "Registro ", JOptionPane.INFORMATION_MESSAGE);
+	                }
 
-				else
-				{
-					fieldContra.setBorder(BorderFactory.createLineBorder(Color.red,2));
-					fieldConfirmarContra.setBorder(BorderFactory.createLineBorder(Color.red,2));
+					else
+					{
+						fieldContra.setBorder(BorderFactory.createLineBorder(Color.red,2));
+						fieldConfirmarContra.setBorder(BorderFactory.createLineBorder(Color.red,2));
+					}
 				}
-			}
-        	
-        	
+	        	
+	        	
 
-		});
-        
-        btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        btnRegistrarse.setBackground(Color.decode("#ecd47f"));
-        panelCenter.add(btnRegistrarse); 
-        
-        /////////////////////////////////////////////////////////  PANEL LOGIN ////////////////////////////////////////////
+			});
+	        
+	        btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 17));
+	        btnRegistrarse.setBackground(Color.decode("#ecd47f"));
+	        panelCenter.add(btnRegistrarse);
+	        
+	       
+	}
+	
+	public void login (JFrame frame)
+	{
+        frmVentana.getContentPane().setLayout(new CardLayout(0, 0));
+ /////////////////////////////////////////////////////////  PANEL LOGIN ////////////////////////////////////////////
         
         JPanel panelLogin = new JPanel();
-        frmVentana.getContentPane().add(panelLogin,"login");
+        frmVentana.getContentPane().add(panelLogin, "name_15220211530200");
         panelLogin.setLayout(new BorderLayout(0, 0));
         
         
         
         JPanel panelNorthLog = new JPanel();
-        panelNorthLog.setBackground(SystemColor.menu);
+        panelNorthLog.setBackground(new Color(51, 153, 153));
         panelLogin.add(panelNorthLog, BorderLayout.NORTH);
         panelNorthLog.setLayout(new GridLayout(0, 1, 0, 0));
         
@@ -280,11 +351,14 @@ public class login_registro {
         panelLogin.add(panelCenterLog, BorderLayout.CENTER);
         panelCenterLog.setLayout(new GridLayout(0, 1, 60, 10));
         
+        JLabel lblNewLabel_3 = new JLabel("");
+        panelCenterLog.add(lblNewLabel_3);
+        
         
         JLabel lblLogin = new JLabel(" Login");
         lblLogin.setBackground(new Color(255, 255, 255));
         lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
-        lblLogin.setFont(new Font("Arial", Font.BOLD, 40));
+        lblLogin.setFont(new Font("Arial", Font.BOLD, 39));
         lblLogin.setForeground(Color.WHITE);
         panelCenterLog.add(lblLogin);
         
@@ -340,53 +414,21 @@ public class login_registro {
         JLabel lblRelleno6 = new JLabel(" ");
         panelCenterLog.add(lblRelleno6);
         
-        //////////////////////////////////////////// MENU ////////////////////////////////
-        
-        JMenuBar menuBarMenu = new JMenuBar();
-        panelNorthLog.add(menuBarMenu);
-        
-        JMenu mnMenu = new JMenu("Usuarios");
-        mnMenu.setHorizontalAlignment(SwingConstants.CENTER);
-        menuBarMenu.add(mnMenu);
-        
-        //JMenuItem mntmInicio = new JMenuItem("Inicio");
-        //mnMenu.add(mntmInicio);
-        
-        mntmLoginLog = new JMenuItem("Login");
-        mntmLoginLog.setHorizontalAlignment(SwingConstants.CENTER);
-        mnMenu.add(mntmLoginLog);
-        
-        mntmLogin.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                mostrarLogin();
-            }
-        });
-        
-        
-        mntmRegistro = new JMenuItem("Registro");
-        mnMenu.add(mntmRegistro);
-        
-        mntmRegistro.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                mostrarRegistro();
-            }
-        });
-        
-        ///////////////////////////////////////////////////////////////////////////////////
-        
-        
-    
-    }
+	}
 	
-	  private void mostrarRegistro() {
-          cardLayout.show(frmVentana.getContentPane(), "registro");
-         // mntmRegistro.setEnabled(false);
-         // mntmLoginLog.setEnabled(true);
-      }
-
-      
-      private void mostrarLogin() {
-          cardLayout.show(frmVentana.getContentPane(), "login");
-          
-      }
+	public void recuperarCuenta(JFrame frame) 
+	{
+	        
+		 JPanel panelRecuperacion = new JPanel();
+		 panelRecuperacion.setBackground(new Color(153, 102, 204));
+	     frmVentana.getContentPane().add(panelRecuperacion, "name_15220231935500");
+	     
+	     JLabel lblNewLabel_7 = new JLabel("Recuperación de cuenta");
+	     lblNewLabel_7.setFont(new Font("Arial", Font.PLAIN, 40));
+	     lblNewLabel_7.setForeground(Color.WHITE);
+	     panelRecuperacion.add(lblNewLabel_7);
+	        
+		
+	}
+	
 }
