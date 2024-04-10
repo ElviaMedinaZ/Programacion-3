@@ -331,7 +331,7 @@ public class juegoNumbers {
        if (contador == 16)
        {
     	   timer.stop();
-    	   JOptionPane.showMessageDialog(null, "Felidades terminaste el rompecabezas","Ganaste",JOptionPane.WARNING_MESSAGE);
+    	   JOptionPane.showMessageDialog(null, "Felidades vete por un cafecito :3","Ganaste",JOptionPane.WARNING_MESSAGE);
        }
     }
 
