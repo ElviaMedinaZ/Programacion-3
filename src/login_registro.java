@@ -41,6 +41,7 @@ public class login_registro {
 	private JPanel panelCenterLog;
 	private JTextField textFieldUsuario;
 	private JTextField textField;
+	private JTextField textFieldCorreoRecuperarCuenta;
 
 	/**
 	 * Launch the application.
@@ -91,10 +92,13 @@ public class login_registro {
         frmVentana.setJMenuBar(menuBar);
         
         
-        //MENU CUENTA
+        //========================================== MENU DE CUENTA ==========================================
+        
         
         JMenu mnCuenta = new JMenu("Cuenta");
         menuBar.add(mnCuenta);
+      //========================================== MENU DE LOGIN ==========================================
+        
         
         JMenuItem mntmLogin = new JMenuItem("Login");
         mntmLogin.addActionListener(new ActionListener() {
@@ -107,21 +111,25 @@ public class login_registro {
 			}
 		});
         mnCuenta.add(mntmLogin);
+       
+      //========================================== MENU DE REGISTRO ==========================================
         
-        JMenuItem mntmNewMenuItem = new JMenuItem("Registro");
-        mntmNewMenuItem.addActionListener(new ActionListener() {
+        
+        JMenuItem mntmRegistro = new JMenuItem("Registro");
+        mntmRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				frmVentana.getContentPane().removeAll();
+				//recover(frmVentana);
 				registro(frmVentana);
 				frmVentana.validate();
 				frmVentana.repaint();
 			}
 		});
-        mnCuenta.add(mntmNewMenuItem);
+        mnCuenta.add(mntmRegistro);
         
         
-        /////////// RECUPERACION DE CUENTA ///////////////////////////////////////
+        //========================================== MENU RECUPERACION DE CUENTA ==========================================
         
         JMenuItem mntmRecuperacionCuenta = new JMenuItem("Recuperación de cuenta");
         mntmRecuperacionCuenta.setHorizontalAlignment(SwingConstants.CENTER);
@@ -138,17 +146,56 @@ public class login_registro {
         
         mnCuenta.add(mntmRecuperacionCuenta);
         
+        //========================================== MENU DE USUARIOS ==========================================
+        
+        
         JMenu mnUsuarios = new JMenu("Usuarios");
+        mnUsuarios.setBackground(new Color(0, 102, 153));
         menuBar.add(mnUsuarios);
         
         JMenuItem mntmAlta = new JMenuItem("Alta");
         mnUsuarios.add(mntmAlta);
         
+        mntmAlta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmVentana.getContentPane().removeAll();
+				alta(frmVentana);
+				frmVentana.validate();
+				frmVentana.repaint();
+			}
+		});
+        
+        
         JMenuItem mntmBaja = new JMenuItem("Baja");
         mnUsuarios.add(mntmBaja);
         
+        mntmBaja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmVentana.getContentPane().removeAll();
+				baja(frmVentana);
+				frmVentana.validate();
+				frmVentana.repaint();
+			}
+		});
+        
+        
+        
         JMenuItem mntmConsultar = new JMenuItem("Consultar");
         mnUsuarios.add(mntmConsultar);
+        
+        mntmConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmVentana.getContentPane().removeAll();
+				consultar(frmVentana);
+				frmVentana.validate();
+				frmVentana.repaint();
+			}
+		});
+        
+        //========================================== MENU DE AYUDA ==========================================
         
         JMenu mnAyuda = new JMenu("Ayuda");
         menuBar.add(mnAyuda);
@@ -156,14 +203,49 @@ public class login_registro {
         JMenuItem mntmComoCrearUsr = new JMenuItem("¿Cómo crear un usuario?");
         mnAyuda.add(mntmComoCrearUsr);
         
+        mntmComoCrearUsr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmVentana.getContentPane().removeAll();
+				creacionUsuario(frmVentana);
+				frmVentana.validate();
+				frmVentana.repaint();
+			}
+		});
+        
         JMenuItem mntmAccederSis = new JMenuItem("¿Cómo acceder al sistema?");
         mnAyuda.add(mntmAccederSis);
         
+        mntmAccederSis.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmVentana.getContentPane().removeAll();
+				accederSistema(frmVentana);
+				frmVentana.validate();
+				frmVentana.repaint();
+			}
+		});
+        
+        
+        
         JMenuItem mntmOlvidarContra = new JMenuItem("¿Qué pasa si olvidé mi contraseña?");
         mnAyuda.add(mntmOlvidarContra);
+        
+        mntmOlvidarContra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frmVentana.getContentPane().removeAll();
+				olvideContraseña(frmVentana);
+				frmVentana.validate();
+				frmVentana.repaint();
+			}
+		});
+        
        
     
     }
+	
+// //////////////////////////////////////// PANEL DE REGISTRO /////////////////////////////////////
 	
 	public void registro(JFrame frame)
 	{
@@ -194,7 +276,7 @@ public class login_registro {
 	        panelRegistrarse.add(panelCenter, BorderLayout.CENTER);
 	        panelCenter.setLayout(new GridLayout(0, 1, 0, 0));
 	        
-	        ////////////////////////////////////////////////////////////////////////
+	      
 	        
 	        JLabel lblNewLabel = new JLabel("                 ");
 	        panelWest.add(lblNewLabel);
@@ -309,12 +391,12 @@ public class login_registro {
 	       
 	}
 	
+	// //////////////////////////////////////// PANEL DE LOGIN ////////////////////////////////////
+	
 	public void login (JFrame frame)
 	{
         frmVentana.getContentPane().setLayout(new CardLayout(0, 0));
- /////////////////////////////////////////////////////////  PANEL LOGIN ////////////////////////////////////////////
-        
-        JPanel panelLogin = new JPanel();
+     JPanel panelLogin = new JPanel();
         frmVentana.getContentPane().add(panelLogin, "name_15220211530200");
         panelLogin.setLayout(new BorderLayout(0, 0));
         
@@ -416,19 +498,152 @@ public class login_registro {
         
 	}
 	
+	// //////////////////////////////////////// PANEL DE CUENTA /////////////////////////////////////
+	
 	public void recuperarCuenta(JFrame frame) 
 	{
 	        
 		 JPanel panelRecuperacion = new JPanel();
 		 panelRecuperacion.setBackground(new Color(153, 102, 204));
 	     frmVentana.getContentPane().add(panelRecuperacion, "name_15220231935500");
+	     panelRecuperacion.setLayout(null);
 	     
-	     JLabel lblNewLabel_7 = new JLabel("Recuperación de cuenta");
-	     lblNewLabel_7.setFont(new Font("Arial", Font.PLAIN, 40));
-	     lblNewLabel_7.setForeground(Color.WHITE);
-	     panelRecuperacion.add(lblNewLabel_7);
-	        
-		
+	     JLabel lblRecuperar = new JLabel("Recuperar cuenta");
+	     lblRecuperar.setForeground(Color.WHITE);
+	     lblRecuperar.setFont(new Font("Arial", Font.BOLD, 40));
+	     lblRecuperar.setBounds(158, 23, 341, 83);
+	     panelRecuperacion.add(lblRecuperar);
+	    
+	     JLabel lblCorreoElectrnico = new JLabel("Correo electrónico");
+	     lblCorreoElectrnico.setForeground(Color.WHITE);
+	     lblCorreoElectrnico.setFont(new Font("Tahoma", Font.PLAIN, 16));
+	     lblCorreoElectrnico.setBounds(84, 160, 466, 50);
+	     panelRecuperacion.add(lblCorreoElectrnico);
+	     
+	     textFieldCorreoRecuperarCuenta = new JTextField();
+	     textFieldCorreoRecuperarCuenta.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	     textFieldCorreoRecuperarCuenta.setColumns(10);
+	     textFieldCorreoRecuperarCuenta.setBounds(84, 212, 466, 50);
+	     panelRecuperacion.add(textFieldCorreoRecuperarCuenta);
+	     
+	     
+	     JButton btnRestablecer = new JButton("Restablecer");
+	     btnRestablecer.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	     btnRestablecer.setBounds(84, 305, 466, 55);
+	     panelRecuperacion.add(btnRestablecer);
+	     
+	     JButton btnRegresarAlLogin = new JButton("Regresar al login");
+	     btnRegresarAlLogin.addActionListener(new ActionListener() {
+	     	public void actionPerformed(ActionEvent e) {
+	     		
+	     	}
+	     });
+	     btnRegresarAlLogin.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	     btnRegresarAlLogin.setBounds(84, 402, 466, 40);
+	     panelRecuperacion.add(btnRegresarAlLogin);
+	    
 	}
 	
+	public void alta(JFrame frame)
+	{
+		JPanel panelAlta = new JPanel();
+	     panelAlta.setBackground(new Color(0, 102, 153));
+	     frmVentana.getContentPane().add(panelAlta, "name_2080397748900");
+	     panelAlta.setLayout(null);
+	     
+	     JLabel lblAlta = new JLabel("Alta");
+	     lblAlta.setHorizontalAlignment(SwingConstants.CENTER);
+	     lblAlta.setBounds(141, 40, 332, 47);
+	     lblAlta.setForeground(Color.WHITE);
+	     lblAlta.setFont(new Font("Arial", Font.BOLD, 40));
+	     panelAlta.add(lblAlta);
+	}
+	public void baja(JFrame frame)
+	{
+		 
+	     JPanel panelBaja = new JPanel();
+	     panelBaja.setLayout(null);
+	     panelBaja.setBackground(new Color(0, 102, 153));
+	     frmVentana.getContentPane().add(panelBaja, "name_2361270284800");
+	     
+	     JLabel lblBaja = new JLabel("Alta");
+	     lblBaja.setHorizontalAlignment(SwingConstants.CENTER);
+	     lblBaja.setForeground(Color.WHITE);
+	     lblBaja.setFont(new Font("Arial", Font.BOLD, 40));
+	     lblBaja.setBounds(147, 39, 332, 47);
+	     panelBaja.add(lblBaja);
+	}
+	
+	
+	public void consultar(JFrame frame)
+	{
+		 JPanel panelConsultar = new JPanel();
+	     panelConsultar.setLayout(null);
+	     panelConsultar.setBackground(new Color(0, 102, 153));
+	     frmVentana.getContentPane().add(panelConsultar, "name_2420776129300");
+	     
+	     JLabel lblConsultar = new JLabel("Consultar");
+	     lblConsultar.setHorizontalAlignment(SwingConstants.CENTER);
+	     lblConsultar.setForeground(Color.WHITE);
+	     lblConsultar.setFont(new Font("Arial", Font.BOLD, 40));
+	     lblConsultar.setBounds(147, 39, 332, 47);
+	     panelConsultar.add(lblConsultar);
+
+	}
+	
+	public void creacionUsuario(JFrame frame)
+	{
+		JPanel panelCreacionUsuario = new JPanel();
+	     panelCreacionUsuario.setLayout(null);
+	     panelCreacionUsuario.setBackground(new Color(0, 102, 153));
+	     frmVentana.getContentPane().add(panelCreacionUsuario, "name_2463380285400");
+	     
+	     JLabel lblCrearUsuario = new JLabel("Creación de  usuario");
+	     lblCrearUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+	     lblCrearUsuario.setForeground(Color.WHITE);
+	     lblCrearUsuario.setFont(new Font("Arial", Font.BOLD, 40));
+	     lblCrearUsuario.setBounds(49, 39, 469, 47);
+	     panelCreacionUsuario.add(lblCrearUsuario);
+	     
+	}
+	
+	public void accederSistema(JFrame frame)
+	{
+		 JPanel panelAccederSistema = new JPanel();
+	     panelAccederSistema.setLayout(null);
+	     panelAccederSistema.setBackground(new Color(0, 102, 153));
+	     frmVentana.getContentPane().add(panelAccederSistema, "name_2642386265100");
+	     
+	     JLabel lblAccederAlSistema = new JLabel("Acceder al sistema");
+	     lblAccederAlSistema.setHorizontalAlignment(SwingConstants.CENTER);
+	     lblAccederAlSistema.setForeground(Color.WHITE);
+	     lblAccederAlSistema.setFont(new Font("Arial", Font.BOLD, 40));
+	     lblAccederAlSistema.setBounds(49, 39, 469, 47);
+	     panelAccederSistema.add(lblAccederAlSistema);
+	}
+	
+	public void olvideContraseña(JFrame frame)
+	{
+		  JPanel panelOlvideMiContraseña = new JPanel();
+		     panelOlvideMiContraseña.setLayout(null);
+		     panelOlvideMiContraseña.setBackground(new Color(0, 102, 153));
+		     frmVentana.getContentPane().add(panelOlvideMiContraseña, "name_2715971420200");
+		     
+		     JLabel lblquePasaSi = new JLabel("¿Qué pasa si olvidé mi contraseña?");
+		     lblquePasaSi.setHorizontalAlignment(SwingConstants.CENTER);
+		     lblquePasaSi.setForeground(Color.WHITE);
+		     lblquePasaSi.setFont(new Font("Arial", Font.BOLD, 30));
+		     lblquePasaSi.setBounds(22, 23, 556, 116);
+		     panelOlvideMiContraseña.add(lblquePasaSi);
+		        
+	}
+	  
+	    
+	     
+	    	     
+	     
+	    
+	     
+	   
+		
 }
