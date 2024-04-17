@@ -14,8 +14,13 @@ import java.awt.Color;
 
 public class TableroDibujo extends JPanel implements KeyListener {
     private JFrame frame;
-    private int x;
-    private int y;
+    int ancho = 100; 
+    int alto = 50; 
+    int rectX = 270;
+    int rectY = 230;
+    
+    private int x=225;
+    private int y=225;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -48,45 +53,69 @@ public class TableroDibujo extends JPanel implements KeyListener {
         panel.add(panelBoton, BorderLayout.SOUTH);
 
         JButton btnReiniciar = new JButton("Reiniciar");
-        btnReiniciar.setBackground(new Color(221, 160, 221));
+        btnReiniciar.setBackground(new Color(202, 81, 190));
         btnReiniciar.setForeground(Color.WHITE);
-        btnReiniciar.setFont(new Font("Tahoma", Font.BOLD, 13));
+        btnReiniciar.setFont(new Font("Tahoma", Font.BOLD, 16));
         btnReiniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 
             }
         });
         panelBoton.add(btnReiniciar);
+        
+        // ////////////////////////////////////// PANEL DIBUJAR /////////////////////////////////
 
         JPanel panelDibujar = new JPanel() {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setColor(Color.PINK);
-                int ancho = 100; 
-                int alto = 50; 
-                int rectX = (getWidth()-ancho)/2; 
-                int rectY = (getHeight()-alto)/2; 
-                g.fillRect(rectX, rectY, ancho, alto);
+                
+                g.fillRect(x, y, ancho, alto);
             }
         };
+        
         panelDibujar.setBackground(new Color(223, 248, 249));
         panelDibujar.addKeyListener(this); 
         panel.add(panelDibujar, BorderLayout.CENTER);
 
       
-        x = panelDibujar.getWidth() / 2-100;
-        y = panelDibujar.getHeight()/2-50;
+        //x = panelDibujar.getWidth() / 2-100;
+        //y = panelDibujar.getHeight()/2-50;
         
         frame.addKeyListener(this); // Añadir el KeyListener al frame
         frame.setFocusable(true);//para poner el foco
-        frame.requestFocusInWindow();// recibe el foco en la ventana actual
-        frame.setVisible(true);
+       // frame.requestFocusInWindow();// recibe el foco en la ventana actual
+        //frame.setVisible(true);
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.print( e.getKeyChar()  + " = " + e.getKeyCode()+"\n"); //tecla presioanda
+        System.out.print( e.getKeyChar()  + " = " + e.getKeyCode()+"\n"); //tecla presionada
+        
+        // ////////////////////////// MOVIMIENTO /////////////////////////////////////
+        
+        switch(e.getKeyCode()) {
+        case 87:
+        	y-=10;
+        	break;//w
+        case 83:
+        	y+=10;
+        	break;//s
+        	
+        case 68:
+        	x+=10;
+        	break;//d
+        	
+        case 65://a
+        	x-=10;
+        	break;
+        	
+        	default:
+        		break;		
+        }
+        frame.repaint();
+       // frame.update(getGraphics());
     }
 
     @Override
