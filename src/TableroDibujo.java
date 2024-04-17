@@ -14,13 +14,17 @@ import java.awt.Color;
 
 public class TableroDibujo extends JPanel implements KeyListener {
     private JFrame frame;
-    int ancho = 100; 
-    int alto = 50; 
-    int rectX = 270;
-    int rectY = 230;
     
-    private int x=225;
-    private int y=225;
+    private int x=220;
+	private int y=220;
+	private int ancho=30;
+	private int alto=30;
+	//private String color;
+	
+	
+	
+	Player p1 = new Player(x,y,ancho,alto,"#F296FF");
+	Player obstaculo = new Player(100,170,60,200,"#DAF7A6");
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -38,7 +42,8 @@ public class TableroDibujo extends JPanel implements KeyListener {
     public TableroDibujo() {
         initialize();
     }
-
+    
+    
     private void initialize() {
         frame = new JFrame();
         frame.setBounds(100, 100, 649, 605);
@@ -69,9 +74,11 @@ public class TableroDibujo extends JPanel implements KeyListener {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.setColor(Color.PINK);
-                
-                g.fillRect(x, y, ancho, alto);
+               g.setColor(Color.decode(p1.getColor()));
+               g.fillRect(p1.getX(),p1.getY(),p1.getAncho(),p1.getAlto());
+               
+               g.setColor(Color.decode(obstaculo.getColor()));
+               g.fillRect(obstaculo.getX(),obstaculo.getY(),obstaculo.getAncho(),obstaculo.getAlto());
             }
         };
         
@@ -94,30 +101,56 @@ public class TableroDibujo extends JPanel implements KeyListener {
         System.out.print( e.getKeyChar()  + " = " + e.getKeyCode()+"\n"); //tecla presionada
         
         // ////////////////////////// MOVIMIENTO /////////////////////////////////////
+
         
-        switch(e.getKeyCode()) {
-        case 87:
-        	y-=10;
-        	break;//w
-        case 83:
-        	y+=10;
-        	break;//s
-        	
-        case 68:
-        	x+=10;
-        	break;//d
-        	
+        switch(e.getKeyCode()) 
+        {
+        
+        case 87://w
+
+            p1.setY(p1.getY() -10);
+            if(p1.colision(obstaculo)) {
+            	 System.out.println("Colision");
+            	p1.setY(p1.getY() + 10);
+            }
+            		 
+            break;
+            
+        case 83://s
+            p1.setY(p1.getY() + 10);
+            if(p1.colision(obstaculo)) {
+            	 System.out.println("Colision");
+            	 p1.setY(p1.getY() - 10);
+            }
+            	
+            break;
+            
+            
+        case 68://d
+            p1.setX(p1.getX() + 10);
+            if(p1.colision(obstaculo)) {
+            	 System.out.println("Colision");
+            	 p1.setX(p1.getX() - 10);
+            }
+            break;
+            
         case 65://a
-        	x-=10;
-        	break;
-        	
-        	default:
-        		break;		
+            p1.setX(p1.getX() - 10);
+            if(p1.colision(obstaculo)) {
+            	 System.out.println("Colision");
+            	 p1.setX(p1.getX() + 10);
+            }
+            
+            break;
+            
+            default:
+                break;      
         }
+ 
+        
         frame.repaint();
        // frame.update(getGraphics());
     }
-
     @Override
     public void keyTyped(KeyEvent e) {}
 
