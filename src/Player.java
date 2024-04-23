@@ -1,3 +1,4 @@
+import java.awt.Graphics2D;
 
 public class Player {
 	
@@ -58,19 +59,7 @@ public class Player {
 		this.color = color;
 	}
 	
-	public boolean colision(Player p1) {
-		
-		 if(x+(ancho-10)>=(p1.getX()) && x<= p1.getX()+(p1.getAncho()-10) 
-				 && y+(alto-10)>=p1.getY() && y<= p1.getY()+(p1.getAlto()-10))
-		 {
-			
-			 return true;
-		 }
-		 
-		 return false;
 
-	}	
-	
 	
 	
 
