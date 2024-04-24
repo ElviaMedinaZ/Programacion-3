@@ -150,13 +150,12 @@ public class TableroDibujo extends JPanel implements KeyListener {
         
         
         
-        movimiento = new Timer(1000, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               
-                update();
-                panelDibujar.repaint(); 
-            }
+        movimiento = new Timer(750, (ActionEvent e) -> {
+        	   update();
+               panelDibujar.repaint(); 
+           
         });
+    
         movimiento.start();
    
     }

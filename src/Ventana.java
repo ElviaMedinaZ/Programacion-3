@@ -40,6 +40,18 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import java.io.FileReader;
+import java.io.IOException;
+
+
 import java.util.Random;
 
 public class Ventana extends JFrame implements MouseListener,KeyListener  {
@@ -74,7 +86,7 @@ public Ventana() {
 		
 		//ubicacion
 		this.setLocation(200,200);
-		this.setLayout(null);//Quita molde predefinido
+		getContentPane().setLayout(null);//Quita molde predefinido
 		this.setLocationRelativeTo(null);//centrar
 		
 		this.iniciarComponentes();//Agrega los componentes
@@ -791,7 +803,7 @@ public Ventana() {
 		//String constructor
 		
 		//this.admin();
-		//this.login();
+		this.login();
 		//this.registro();
 		//this.calculadora();
 		//this.calculadora2();
@@ -799,7 +811,7 @@ public Ventana() {
 		
 		//this.registroViejo();
 		//this.loginViejo();
-		this.botones();
+		//this.botones();
 		this.repaint();
 		this.validate();
 	}
@@ -894,7 +906,7 @@ public Ventana() {
 		
 		login.add(accept);
 		
-		this.add(login);
+		getContentPane().add(login);
 	}
 	
 	
@@ -967,7 +979,58 @@ public Ventana() {
 	    
 	    
 	    JButton btLogin = new JButton("Login");
-		btLogin.setFont(new Font("Arial",Font.BOLD,20));//establece fuente del texto
+	    btLogin.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		JSONParser parser = new JSONParser();
+		       
+				
+				try {
+		         
+		            Object obj = parser.parse(new FileReader("src/users.json")); 
+		            JSONObject jsonObject = (JSONObject) obj;
+
+		           
+		            JSONArray users = (JSONArray) jsonObject.get("users");
+
+		         
+		            for (Object user : users) {
+		            	
+		                JSONObject userObject = (JSONObject) user;
+		                
+		                String id = String.valueOf(userObject.get("id"));
+		                String firstName = (String) userObject.get("firstName");
+		                String lastName = (String) userObject.get("lastName");
+		                String gender = String.valueOf(userObject.get("gender"));
+		                String age = String.valueOf(userObject.get("age"));
+		                String email = (String) userObject.get("email");
+		                String phone = String.valueOf(userObject.get("phone"));
+		                String username = (String) userObject.get("username");
+		                String password = (String) userObject.get("password");
+		                
+		               
+		              
+		               
+
+
+		                System.out.println("id: " + id);
+		                System.out.println("fistName: " + firstName);
+		                System.out.println("lastName: " + lastName);
+		                System.out.println("age: " + age);
+		                System.out.println("gender: " + gender);
+		                System.out.println("email: "+ email);
+		                System.out.println("phone: "+ phone);
+		                System.out.println("Username: " + username);
+		                System.out.println("Password: " + password);
+		                
+		                System.out.println("=============================");
+		            }
+
+		        } catch (IOException | ParseException e1) {
+		            e1.printStackTrace();
+		        }
+	    	}
+	    });
+		btLogin.setFont(new Font("Arial",Font.BOLD,20));
 		btLogin.setBounds(400, 460, 200, 70);
 		btLogin.setBackground(Color.decode("#E0c668"));
 		login.add(btLogin);
@@ -988,6 +1051,10 @@ public Ventana() {
 		
 		
 		JButton singUp = new JButton("Sing Up");
+		singUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 	    singUp.setFont(new Font("Arial",Font.BOLD,20));
 	    singUp.setBounds(430, 610, 150, 50); 
 	    singUp.setBackground(Color.decode("#E0c668"));
@@ -1000,7 +1067,7 @@ public Ventana() {
 	    login.add(contornoTexto); 
 	    
 		
-		this.add(login);
+		getContentPane().add(login);
 		
 	}
 	
@@ -1169,7 +1236,7 @@ public Ventana() {
 		});
 		
 		
-		this.add(registro);
+		getContentPane().add(registro);
 	}
 	
 	
@@ -1302,7 +1369,7 @@ public Ventana() {
 		
 		
 		
-		this.add(registro);
+		getContentPane().add(registro);
 		
 	}
 	
@@ -1403,7 +1470,7 @@ public Ventana() {
 		tableScroll.setBounds(30,280,920,300);
 		adminPanel.add(tableScroll);
 		
-		this.add(adminPanel);
+		getContentPane().add(adminPanel);
 		
 	}
 	
@@ -1556,7 +1623,7 @@ public Ventana() {
 		suma.setBackground(Color.decode("#7C6290"));
 		calculadora.add(suma);
 		
-	    this.add(calculadora);
+	    getContentPane().add(calculadora);
 		
 	    
 		
@@ -1629,7 +1696,7 @@ public void calculadora2() {
 		
 		
 		
-		this.add(panel);
+		getContentPane().add(panel);
 		
 	}
 	
@@ -1804,7 +1871,7 @@ public void calculadora2() {
 		central2.add(monto);
 		
 
-		this.add(principal);
+		getContentPane().add(principal);
 		
 		
 	}
@@ -1876,7 +1943,7 @@ public void calculadora2() {
 		});
 				
 		
-		this.add(btn_panel);
+		getContentPane().add(btn_panel);
 	}
 
 
@@ -1942,15 +2009,41 @@ public void calculadora2() {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
+		/*
+		try {
+			// create object of Random class
+			Random colorPanel = new Random();
+			int rand_num = colorPanel.nextInt(0xffffff + 1);
+			// format it as hexadecimal string and print
+			String colorCode = String.format("#%06x", rand_num);
+			btn_panel.setBackground(Color.decode(colorCode));
+			
+			// Si conocemos la linea que da el error se puede
+			/*if(btn_panel!=null) {
+				btn_panel.setBackground(Color.decode(colorCode));
+				syso
+	
+			
+		}catch(Exception ep) {
+			System.out.println("Error xd");
+		}*
+
+		/*
+	try {
+		int [] myNumbers= {1,2,3};
+		System.out.println(myNUmbers[1]);
+		if(btn_panel!=null) {
+			btn_panel.add(otro_boton);
+		}
 		
-		// create object of Random class
-		Random colorPanel = new Random();
-		int rand_num = colorPanel.nextInt(0xffffff + 1);
-		// format it as hexadecimal string and print
-		String colorCode = String.format("#%06x", rand_num);
-		
-		btn_panel.setBackground(Color.decode(colorCode));
-		
+	}catch(ArrayIndexOutException ep) {
+		System.out.println("Supero el limite de los elementos");
+	}
+	
+	catch(Exception ep) {
+		System.out.println("hola xd");
+		System.out.println(ep.toString());
+		*/
 	}
 
 
@@ -2091,4 +2184,7 @@ public void calculadora2() {
 		
 	}
 	
+	// ------------ TAREA ----------------------
+	
+	//Tarea, leer un .jason y que  que con un boton de login, se muestren los datos en la consola
 }
