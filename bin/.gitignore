@@ -1,17 +1,16 @@
-/Main.class
-/Password.png
-/UserLogo.jpg
-/aldeano xd.jpg
-/arbusto.png
-/arbustoxd.png
-/añadir.png
-/cerdito.jpg
 /diamante.jpg
 /eliminar.png
 /flor mario.png
 /flor2.png
 /fondo marino 1.jpg
 /fondoZelda.jpg
+/Main.class
+/Player.class
+/TableroDibujo$1.class
+/TableroDibujo$2.class
+/TableroDibujo$3.class
+/TableroDibujo$4.class
+/TableroDibujo.class
 /iconoGato.jpeg
 /laberinto.wav
 /link.png
@@ -20,12 +19,6 @@
 /mario2.png
 /user.png
 /users.json
-/Player.class
-/TableroDibujo$1.class
-/TableroDibujo$2.class
-/TableroDibujo$3.class
-/TableroDibujo$4.class
-/TableroDibujo.class
 /Ventana$1.class
 /Ventana$2.class
 /Ventana$3.class
@@ -70,3 +63,6 @@
 /login_registro$8.class
 /login_registro$9.class
 /login_registro.class
+/LoginJson$1.class
+/LoginJson.class
+/LoginJson$2.class
