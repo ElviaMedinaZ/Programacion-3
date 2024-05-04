@@ -4,12 +4,20 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class AuthView {
 	
@@ -71,13 +79,58 @@ public class AuthView {
 		
 			
 			public void actionPerformed(ActionEvent e) {
-				if(modelo.login(txtUser.getText(), psfContrasena.getText())) {
-					System.out.println("Bienvenido");
-				}
-				else {
-					System.out.println("Eror al ingresar");
-				}
+				
+				
+				JSONParser parser = new JSONParser();
+				String usr = txtUser.getText();
+		        String psw = new String(psfContrasena.getPassword());
+
+		        boolean encontrado = false;
+
+		        try {
+		        
+		            Object obj = parser.parse(new FileReader("src/users.json")); 
+		            JSONObject jsonObject = (JSONObject) obj;
+		            JSONArray users = (JSONArray) jsonObject.get("users");
+		            
+
+		            for (Object user : users) {
+		                JSONObject userObject = (JSONObject) user;
+
+		                String username = (String) userObject.get("username");
+		                String password = (String) userObject.get("password");
+		                System.out.println("Username: " + username);
+		                System.out.println("Password: " + password);
+		                System.out.println("=============================");
+		                
+		                if (username.equals(usr) && password.equals(psw)) {
+		                	encontrado = true;
+		                	
+		                	break;
+		                }
+		             }
+
+		             if (encontrado) 
+		             {
+		            	System.out.println("\n------------------------------------------");
+		            	System.out.println("Usuario encontrado");
+		            	System.out.println("------------------------------------------");
+		            	 JOptionPane.showMessageDialog(null, "Usuario encontrado","Bienvenido",JOptionPane.INFORMATION_MESSAGE);
+		              }
+		             else {
+		            	 System.out.println("\n------------------------------------------");
+		            	 System.out.println("Usuario o contraseña incorrectos");
+		            	 System.out.println("\n------------------------------------------");
+		            	JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+		            	 
+		             }
+
+		        } catch (IOException | ParseException e1) {
+		            e1.printStackTrace();
+		        }
+				
 			}
+			
 		});
 		
 		return panel;
